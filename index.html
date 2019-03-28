@@ -14,12 +14,12 @@
 
     <link href="plugin-frameworks/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
-    <link href="./dist/css/swiper.min.css" rel="stylesheet">
-
+    <link href="./plugin-frameworks/swiper.min.css" rel="stylesheet">
     <link href="fonts/ionicons.css" rel="stylesheet">
-
-
     <link href="common/styles.css" rel="stylesheet">
+    <script src="plugin-frameworks/jquery-3.2.1.min.js "></script>
+    <script src="plugin-frameworks/bootstrap.min.js "></script>
+    <script src="common/scripts.js "></script>
 
     <style>
         .swiper-container {
@@ -62,7 +62,7 @@
     <header>
         <a class="logo" href="#"><img src="images/logo-white.png" alt="Logo"></a>
         <div style="height: 70px;border: 1px solid #aaa">
-            <div style="">
+            <div>
                 aaaaa
             </div>
             <a class="menu-nav-icon" data-menu="#main-menu" href="#" style="float: right; margin-right: 10px"><i class="ion-navicon"></i></a>
@@ -101,32 +101,33 @@
 
     <div class="slider-main h-800x h-sm-auto pos-relative pt-95 pb-25">
         <div class="img-bg bg-1 bg-layer-4"></div>
-        <div style="margin: 50px;height: 500px;border: 1px solid black">
-            <div class="swiper-container gallery-top">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide" style="background-image: url(./images/1.jpg)"></div>
-                    <div class="swiper-slide" style="background-image: url(./images/2.jpg)"></div>
-                    <div class="swiper-slide" style="background-image: url(./images/3.jpg)"></div>
-                    <div class="swiper-slide" style="background-image: url(./images/4.jpg)"></div>
-                    <div class="swiper-slide" style="background-image: url(./images/5.jpg)"></div>
+        <div style="margin-top: 100px;height: 500px; " class=" container-fluid ">
+            <!-- Swiper -->
+            <div class="swiper-container gallery-top ">
+                <div class="swiper-wrapper ">
+                    <div class="swiper-slide " style="background-image: url(./images/1.jpg) "></div>
+                    <div class="swiper-slide " style="background-image: url(./images/2.jpg) "></div>
+                    <div class="swiper-slide " style="background-image: url(./images/3.jpg) "></div>
+                    <div class="swiper-slide " style="background-image: url(./images/4.jpg) "></div>
+                    <div class="swiper-slide " style="background-image: url(./images/5.jpg) "></div>
                 </div>
                 <!-- Add Arrows -->
-                <div class="swiper-button-next swiper-button-white"></div>
-                <div class="swiper-button-prev swiper-button-white"></div>
+                <div class="swiper-button-next swiper-button-white "></div>
+                <div class="swiper-button-prev swiper-button-white "></div>
             </div>
-            <div class="swiper-container gallery-thumbs">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide" style="background-image: url(./images/1.jpg)"></div>
-                    <div class="swiper-slide" style="background-image: url(./images/2.jpg)"></div>
-                    <div class="swiper-slide" style="background-image: url(./images/3.jpg)"></div>
-                    <div class="swiper-slide" style="background-image: url(./images/4.jpg)"></div>
-                    <div class="swiper-slide" style="background-image: url(./images/5.jpg)"></div>
+            <div class="swiper-container gallery-thumbs ">
+                <div class="swiper-wrapper ">
+                    <div class="swiper-slide " style="background-image: url(./images/1.jpg) "></div>
+                    <div class="swiper-slide " style="background-image: url(./images/2.jpg) "></div>
+                    <div class="swiper-slide " style="background-image: url(./images/3.jpg) "></div>
+                    <div class="swiper-slide " style="background-image: url(./images/4.jpg) "></div>
+                    <div class="swiper-slide " style="background-image: url(./images/5.jpg) "></div>
                     >
                 </div>
             </div>
 
             <!-- Swiper JS -->
-            <script src="./dist/js/swiper.min.js"></script>
+            <script src="./plugin-frameworks/swiper.js "></script>
 
             <!-- Initialize Swiper -->
             <script>
@@ -138,6 +139,7 @@
                     loopedSlides: 5, //looped slides should be the same
                     watchSlidesVisibility: true,
                     watchSlidesProgress: true,
+
                 });
                 var galleryTop = new Swiper('.gallery-top', {
                     spaceBetween: 10,
@@ -150,44 +152,48 @@
                     thumbs: {
                         swiper: galleryThumbs,
                     },
+                    autoplay: {
+                        delay: 5000,
+                        disableOnInteraction: false,
+                    },
                 });
             </script>
         </div>
     </div>
     <!-- slider-main -->
 
-    <main class="container-fluid">
-        <div class="container">
-            <div class="row">
-                <div class="col-6 col-sm-4 col-md-3 product dplay-tbl-cell color-white mtb-30"></div>
-                <div class="col-6 col-sm-4 col-md-3 product dplay-tbl-cell color-white mtb-30">daaa</div>
-                <div class="col-6 col-sm-4 col-md-3 product dplay-tbl-cell color-white mtb-30"></div>
-                <div class="col-6 col-sm-4 col-md-3 product dplay-tbl-cell color-white mtb-30"></div>
-                <div class="col-6 col-sm-4 col-md-3 product dplay-tbl-cell color-white mtb-30"></div>
-                <div class="col-6 col-sm-4 col-md-3 product dplay-tbl-cell color-white mtb-30"></div>
+    <main class="container-fluid " style="margin-top: 20px ">
+        <div class="container ">
+            <div class="row ">
+                <div class="col-6 col-sm-4 col-md-3 product dplay-tbl-cell color-white mtb-30 "></div>
+                <div class="col-6 col-sm-4 col-md-3 product dplay-tbl-cell color-white mtb-30 ">daaa</div>
+                <div class="col-6 col-sm-4 col-md-3 product dplay-tbl-cell color-white mtb-30 "></div>
+                <div class="col-6 col-sm-4 col-md-3 product dplay-tbl-cell color-white mtb-30 "></div>
+                <div class="col-6 col-sm-4 col-md-3 product dplay-tbl-cell color-white mtb-30 "></div>
+                <div class="col-6 col-sm-4 col-md-3 product dplay-tbl-cell color-white mtb-30 "></div>
             </div>
         </div>
     </main>
 
-    <footer class="bg-191 color-ash pt-50 pb-20 text-left center-sm-text">
+    <footer class="bg-191 color-ash pt-50 pb-20 text-left center-sm-text ">
 
-        <div class="container-fluid">
-            <div class="row">
+        <div class="container-fluid ">
+            <div class="row ">
 
-                <div class="col-lg-1"></div>
+                <div class="col-lg-1 "></div>
 
-                <div class="col-md-4 col-lg-6 mb-30">
-                    <div class="card h-100">
-                        <div class="dplay-tbl">
-                            <div class="dplay-tbl-cell">
+                <div class="col-md-4 col-lg-6 mb-30 ">
+                    <div class="card h-100 ">
+                        <div class="dplay-tbl ">
+                            <div class="dplay-tbl-cell ">
 
-                                <a href="#"><img src="images/logo-white.png"></a>
-                                <p class="color-ash mt-25">
+                                <a href="# "><img src="images/logo-white.png "></a>
+                                <p class="color-ash mt-25 ">
                                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                     Copyright &copy;
                                     <script>
                                         document.write(new Date().getFullYear());
-                                    </script> All rights reserved | This template is made with <i class="ion-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                    </script> All rights reserved | This template is made with <i class="ion-heart " aria-hidden="true "></i> by <a href="https://colorlib.com " target="_blank ">Colorlib</a>
                                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                 </p>
 
@@ -200,15 +206,15 @@
                 </div>
                 <!-- col-lg-4 col-md-6 -->
 
-                <div class="col-md-4 col-lg-2 mb-30">
-                    <div class="card h-100">
-                        <div class="dplay-tbl">
-                            <div class="dplay-tbl-cell">
+                <div class="col-md-4 col-lg-2 mb-30 ">
+                    <div class="card h-100 ">
+                        <div class="dplay-tbl ">
+                            <div class="dplay-tbl-cell ">
 
-                                <ul class="list-a-plr-10">
-                                    <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                                    <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                                    <li><a href="#"><i class="ion-social-youtube"></i></a></li>
+                                <ul class="list-a-plr-10 ">
+                                    <li><a href="# "><i class="ion-social-facebook "></i></a></li>
+                                    <li><a href="# "><i class="ion-social-twitter "></i></a></li>
+                                    <li><a href="# "><i class="ion-social-youtube "></i></a></li>
                                 </ul>
 
                             </div>
@@ -220,14 +226,14 @@
                 </div>
                 <!-- col-lg-4 col-md-6 -->
 
-                <div class="col-md-4 col-lg-2 mb-30 text-left">
-                    <div class="card h-100">
-                        <div class="dplay-tbl">
-                            <div class="dplay-tbl-cell">
-                                <form class="form-block form-brdr-b mx-w-400x m-auto">
+                <div class="col-md-4 col-lg-2 mb-30 text-left ">
+                    <div class="card h-100 ">
+                        <div class="dplay-tbl ">
+                            <div class="dplay-tbl-cell ">
+                                <form class="form-block form-brdr-b mx-w-400x m-auto ">
 
-                                    <input class="color-white ptb-15 center-sm-text" type="text" placeholder=" Your Email">
-                                    <button class="mt-30 btn-brdr-grey color-ash w-100 text-center" type="submit">SUBSCRIBE</button>
+                                    <input class="color-white ptb-15 center-sm-text " type="text " placeholder=" Your Email ">
+                                    <button class="mt-30 btn-brdr-grey color-ash w-100 text-center " type="submit ">SUBSCRIBE</button>
 
                                 </form>
                             </div>
@@ -246,15 +252,9 @@
     </footer>
 
     <!-- SCIPTS -->
+    <script>
+    </script>
 
-    <script src="plugin-frameworks/jquery-3.2.1.min.js"></script>
-
-    <script src="plugin-frameworks/bootstrap.min.js"></script>
-
-    <script src="plugin-frameworks/swiper.js"></script>
-
-
-    <script src="common/scripts.js"></script>
 
 </body>
 

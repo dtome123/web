@@ -6,7 +6,7 @@
     <title>Swiper demo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <!-- Link Swiper's CSS -->
-    <link rel="stylesheet" href="./dist/css/swiper.min.css">
+    <link rel="stylesheet" href="./plugin-frameworks/swiper.min.css">
 
     <!-- Demo styles -->
     <style>
@@ -61,31 +61,31 @@
 
 <body>
     <!-- Swiper -->
-    <div class="swiper-container gallery-top">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide" style="background-image: url(./images/1.jpg)"></div>
-            <div class="swiper-slide" style="background-image: url(./images/2.jpg)"></div>
-            <div class="swiper-slide" style="background-image: url(./images/3.jpg)"></div>
-            <div class="swiper-slide" style="background-image: url(./images/4.jpg)"></div>
-            <div class="swiper-slide" style="background-image: url(./images/5.jpg)"></div>
+    <div class="swiper-container gallery-top ">
+        <div class="swiper-wrapper ">
+            <div class="swiper-slide " style="background-image: url(./images/1.jpg) "></div>
+            <div class="swiper-slide " style="background-image: url(./images/2.jpg) "></div>
+            <div class="swiper-slide " style="background-image: url(./images/3.jpg) "></div>
+            <div class="swiper-slide " style="background-image: url(./images/4.jpg) "></div>
+            <div class="swiper-slide " style="background-image: url(./images/5.jpg) "></div>
         </div>
         <!-- Add Arrows -->
-        <div class="swiper-button-next swiper-button-white"></div>
-        <div class="swiper-button-prev swiper-button-white"></div>
+        <div class="swiper-button-next swiper-button-white "></div>
+        <div class="swiper-button-prev swiper-button-white "></div>
     </div>
-    <div class="swiper-container gallery-thumbs">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide" style="background-image: url(./images/1.jpg)"></div>
-            <div class="swiper-slide" style="background-image: url(./images/2.jpg)"></div>
-            <div class="swiper-slide" style="background-image: url(./images/3.jpg)"></div>
-            <div class="swiper-slide" style="background-image: url(./images/4.jpg)"></div>
-            <div class="swiper-slide" style="background-image: url(./images/5.jpg)"></div>
+    <div class="swiper-container gallery-thumbs ">
+        <div class="swiper-wrapper ">
+            <div class="swiper-slide " style="background-image: url(./images/1.jpg) "></div>
+            <div class="swiper-slide " style="background-image: url(./images/2.jpg) "></div>
+            <div class="swiper-slide " style="background-image: url(./images/3.jpg) "></div>
+            <div class="swiper-slide " style="background-image: url(./images/4.jpg) "></div>
+            <div class="swiper-slide " style="background-image: url(./images/5.jpg) "></div>
             >
         </div>
     </div>
 
     <!-- Swiper JS -->
-    <script src="./dist/js/swiper.min.js"></script>
+    <script src="./plugin-frameworks/swiper.min.js "></script>
 
     <!-- Initialize Swiper -->
     <script>
@@ -97,6 +97,9 @@
             loopedSlides: 5, //looped slides should be the same
             watchSlidesVisibility: true,
             watchSlidesProgress: true,
+            autoplay: {
+                delay: 5000,
+            },
         });
         var galleryTop = new Swiper('.gallery-top', {
             spaceBetween: 10,
@@ -108,6 +111,9 @@
             },
             thumbs: {
                 swiper: galleryThumbs,
+            },
+            autoplay: {
+                delay: 5000,
             },
         });
     </script>
