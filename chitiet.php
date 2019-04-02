@@ -42,14 +42,22 @@
                         <img src="images/1.jpg" alt="">
                     </div>
                     <div class="col-5">
-                        <div>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores tempore officiis, placeat reiciendis nobis quae harum fuga quidem id eaque reprehenderit provident vero consequatur quod impedit ea! Provident, illo laudantium!
+                        <div id="name">
+                           Ma soi
                         </div>
+						<div id="dongia">
+						Gia:
+						</div>
+						<div>
+							<input type="text" name="sl" id="sl">
+						</div>
                         <button type="button" class="btn btn-light">Primary</button>
                     </div>
-                    
                 </div>
-                
+				<!-----------------Noi dung chi tiet----------->
+                <div>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis nemo pariatur animi fugit rem excepturi odit quam maxime, nostrum perspiciatis eius! Odit facere voluptatum, ipsam asperiores exercitationem voluptas quo veniam.
+				</div>
 					
 				<!-----------------comment----------->	
 					<div class="brdr-grey-1 mt-50 mt-sm-20"></div>
