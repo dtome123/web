@@ -14,23 +14,34 @@
 
     <link href="plugin-frameworks/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
-    <link href="./plugin-frameworks/swiper.min.css" rel="stylesheet">
+    <link href="./plugin-frameworks/swiper.css" rel="stylesheet">
     <link href="fonts/ionicons.css" rel="stylesheet">
     <link href="common/styles.css" rel="stylesheet">
-   
+    <style>
+.sticky {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+           /*  padding: 5px;
+            background-color: #cae8ca;
+            border: 2px solid #4CAF50; */
+        }
+</style>
 
 
 </head>
 
 <body>
-
+ 
     <?php
         include "header.php"
-     ?> 
+    ?> 
+ 
+    
 
-
+   
     <div class="slider-main h-800x h-sm-auto pos-relative pt-95 pb-25">
-        <div class="img-bg bg-1 bg-layer-4"></div>
+        <!-- <div class="img-bg bg-1 bg-layer-4"></div> -->
         <?php 
             include "slide.php";
         ?>
@@ -38,7 +49,7 @@
         </div>
     </div>
     <!-- slider-main -->
-
+    
     <main class="container-fluid " style="margin-top: 20px ">
         <div class="container ">
             <div class="row ">
@@ -77,6 +88,7 @@
             </div>
         </div>
     </main>
+    
 
    <?php
         include "footer.html"
@@ -84,7 +96,7 @@
     <!-- SCIPTS -->
     <script>
     </script>
-     <script src="plugin-frameworks/jquery-3.2.1.min.js "></script>
+     <script src="plugin-frameworks/jquery.js "></script>
     <script src="plugin-frameworks/bootstrap.min.js "></script>
     <script src="common/scripts.js "></script>
 

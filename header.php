@@ -1,20 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
 
-<body>
-    <header>
+    <header >
+    <div class="img-bg bg-1 bg-layer-4"></div>
         <a class="logo" href="#"><img src="images/logo-white.png" alt="Logo"></a>
-        <div style="height: 4.5em;border: 1px solid #aaa">
-            <div style="font-size: .9em;margin-top: 20px;margin-right: 0px">
-                aaaaa
-            </div>
+        <div style="height: 4.6em;border: 1px solid #aaa">
+
+            <span style="float:right"><img src="images/sys/acc.jpg" id="acc"alt=""></span>
             <a class="menu-nav-icon" data-menu="#main-menu" href="#" style="float: right; margin-right: 10px"><i class="ion-navicon"></i></a>
         </div>
         <div class="right-area">
@@ -25,9 +16,6 @@
             <!-- src-form -->
         </div>
         <!-- right-area -->
-
-
-
         <ul class="main-menu" id="main-menu" style="float: left;">
             <li><a href="index.html">Home</a></li>
             <li class="drop-down"><a href="#!">Sport<i class="ion-arrow-down-b"></i></a>
@@ -47,6 +35,3 @@
         <div class="clearfix"></div>
 
     </header>
-</body>
-
-</html>

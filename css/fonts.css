@@ -1,0 +1,20 @@
+@font-face {
+    font-family: "taviraj";
+    src: url(../fonts/Taviraj/Taviraj-Black.ttf);
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "play";
+    src: url(../fonts/Play/Play-Bold.ttf);
+}
+
+@font-face {
+    font-family: "baloo";
+    src: url(../font/Baloo_Tamma/BalooTamma-Regular.ttf)
+}
+
+@font-face {
+    font-family: "lob";
+    src: url(../font/Lobster/Lobster-Regular.ttf)
+}
