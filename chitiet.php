@@ -1,3 +1,4 @@
+<?php session_start() ;?>
 <!DOCTYPE HTML>
 <html lang="en">
 
@@ -10,110 +11,87 @@
     <!-- Font -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
     <!-- Stylesheets -->
-    <link href="plugin-frameworks/bootstrap.min.css" rel="stylesheet">
+    <link href="plugin-frameworks/bootstrap.css" rel="stylesheet">
     <link href="fonts/ionicons.css" rel="stylesheet">
     <link href="common/styles.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/fonts.css">
     <script src="plugin-frameworks/jquery.js"></script>
-    <script src="plugin-frameworks/bootstrap.min.js"></script>
+    <script src="plugin-frameworks/bootstrap.js"></script>
     <script src="common/scripts.js"></script>
-    
+
     <style>
-    #so {
-        width: 40px;
-        height: 30px;
-        color: #898989;
-        border: 1px solid #ccc;
-        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
-        border-radius: 3px;
-        box-shadow: 0 1px 2px rgba(25, 25, 25, 0.25) inset, -1px 1px #fff;
-        transition: all 0.3s linear;
-        text-align: center;
-    }
+   
     </style>
-    <script>
-    function tru() {
-        var sl = $('#so').val();
-        if (sl > 1) {
-            sl--;
-            $('#so').val(sl);
-        }
-    }
-
-    function cong() {
-        var sl = $('#so').val();
-        if (sl < 20) {
-            sl++;
-            $('#so').val(sl);
-        }
-    }
-	function i2() {
-		var sl = $('#so').val();
-		if (sl > 20)
-			$('#so').val(20);
-	}
-    function in_so(evt) {
-			
-		var charCode = (evt.which) ? evt.which : event.keyCode;
-       if(charCode == 59 || charCode == 46)
-		return true;
-       if (charCode > 31 && (charCode < 48 || charCode > 57))
-		  return false;
-	   return true;
-	}
-    $(document).ready(function () {
-        $("#so").blur(function () { 
-         if($(this).val()=="")
-            $(this).val(1);
-    });
-    });
-  
-    </script>
+    <script src="js/jquery.number.js"></script>
+    <script src="js/cart.js"></script>
 </head>
+<?php
+    require "condb/DataProvider.php";
+    if(isset($_GET["id"])){
+        $sql="SELECT * From sanpham where MaSP='".$_GET['id']."'";
+        $result=DataProvider::executeQuery($sql);
+        $row=mysqli_fetch_array($result);
+    }
+ ?>
 
-<body>
+<body style="background-color:none">
 
     <?php 
         include "header.php"
     ?>
 
-
-    <div class="slider-main h-200x h-sm-auto pos-relative pt-95 pb-25">
-        <div class="img-bg bg-16 bg-layer-6"></div>
-    </div><!-- slider-main -->
-
-
+    <!-- slider-main -->
     <section class="bg-1-white ptb-0">
-        <div class="container-fluid">
+        <div class="container" style="margin-top:150px">
             <div class="row">
 
                 <div class="col-md-12 col-lg-9 ptb-50  pr-md-15">
                     <div class="row">
-                        <div class="col-7">
-                            <img src="images/1.jpg" alt="">
+                        <div class="col-12 col-sm-6 col-md-6" style="margin-bottom:20px">
+                            <img src="images/sanpham/<?php echo $row["Hinh"] ?>" alt="" style="width:100%;heigth:100%;">
                         </div>
-                        <div class="col-5">
-                            <div id="name" style="font-family:taviraj;font-size: 50px;">
-                                Ma soi
+                        <div class="col-12 col-sm-6 col-md-6 border" style="height:100%;border-width:3px !important; border-style:dotted !important">
+                            <div id="name" style="font-family:taviraj;font-size: 40px;">
+                                <?php echo $row["TenSP"] ?>
                             </div>
-                            <div id="c">
-                                Số lượng:
-                                <input type="button" value="-" onclick="tru()"
-                                    style="height: 30px; border: none;width: 20px">
-                                <input type="text" value="1" id="so" name="sl" onkeydown="return in_so(event)" onkeyup="i2()" >
-                                <input type="button" value="+" onclick="cong()"
-                                    style="height: 30px;width: 20px; border: none">
-                                <p>
-                                    Giá: <span id="gia"></span>
-                                </p>
+                            <div>
                             </div>
+                            <ul class="list-group">
+                                <li class="list-group-item">Số người chơi: <?php echo $row['SoNguoiChoi'] ?></li>
+                                <li class="list-group-item">Độ tuổi: <?php echo $row['Tuoi'] ?> </li>
+
+                                <li class="list-group-item soluong" >Số lượng:
+                                <input type="button" value="-" onclick="tru('<?php echo $row['MaSP'];?>')" style="height: 30px; border: none;width: 20px">
+                                    <input type="text" id="soluong"value="<?php if(isset($_SESSION['cart'][$row['MaSP']])){echo $_SESSION['cart'][$row['MaSP']];} else echo 1; ?>"   class="so" name="<?php echo $row['MaSP'];?>" onkeydown="return in_so(event)" onkeyup="i2()">
+                                    <input type="button" value="+" onclick="cong('<?php echo $row['MaSP'];?>')" style="height: 30px;width: 20px; border: none">
+                                    <span id="detail">
+                                        <?php 
+                                            if(isset($_SESSION['cart'][$row['MaSP']])){ 
+                                                echo '(Đã có trong giỏ hàng)';
+                                            }
+                                        ?>
+                                    </span>
+                                </li>
+                                <li class="list-group-item">
+                                    Giá: <span
+                                        id="gia"><?php echo $row["Gia"]=number_format($row["Gia"],0,",",".") ;?> VNĐ
+                                    </span>
+                                </li>
+                            </ul>
+                            <button class="btn btn-primary buy them " number="<?php echo $row['MaSP'] ?>" >
+                                Thêm vào giỏ 
+                            </button>
                         </div>
                     </div>
                     <!-----------------Noi dung chi tiet----------->
-                    <div>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis nemo pariatur animi fugit
-                        rem excepturi odit quam maxime, nostrum perspiciatis eius! Odit facere voluptatum, ipsam
-                        asperiores exercitationem voluptas quo veniam.
+
+                    <div id="chitiet">
+                        <div>
+                            <hr>
+                            <p>Chi tiết</p>
+                            
+                        </div>
+                        <?php echo $row['MoTa'] ?>
                     </div>
 
                     <!-----------------comment----------->
@@ -160,7 +138,17 @@
     <!-- SCIPTS -->
 
 
+<script>
+    
+    $(".them").click(function () { 
+        alert('Đã thêm thành công');
+        $("#detail").text("(Đã có trong giỏ hàng)"); 
+        
+        
 
+    });
+
+</script>
 
 </body>
 

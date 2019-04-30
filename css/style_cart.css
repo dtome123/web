@@ -1,0 +1,62 @@
+.hinh {
+    width: 9em;
+    height: 100px;
+}
+
+.title {
+    margin: 2em 0 3em;
+}
+
+.title span {
+    font-size: 4em;
+    font-family: baloo;
+    color: rgb(166, 170, 207);
+}
+
+.thanhtien {
+    border: 1px solid #e9e9e9;
+    line-height: 200%;
+    margin-top: 20px;
+    padding: 15px;
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 50px;
+}
+
+thead td {
+    text-align: center;
+    font-family: taviraj;
+    color: rgb(109, 104, 104);
+}
+
+.table th,
+.table td {
+    padding: 0.75rem;
+    vertical-align: middle;
+    border-top: 1px solid #dee2e6;
+}
+
+.ten_sp {
+    width: 15rem;
+}
+
+#empty {
+    background-color: rgb(229, 241, 241);
+    height: 200px;
+    margin-bottom: 50px;
+    text-align: center;
+    padding-top: 50px
+}
+
+#empty h3 {
+    color: rgb(153, 95, 9);
+    font-weight: bold
+}
+
+#empty button {
+    color: rgb(10, 104, 104);
+}
+
+#empty button:hover {
+    color: blue
+}

@@ -1,3 +1,7 @@
+@import "./fonts.css";
+@import "chitiet.css";
+@import "sanpham.css";
+@import "style_index.css";
 .product {
     margin-right: 10px;
 }
@@ -9,3 +13,138 @@
     margin-right: 70px;
     margin-top: 10px;
 }
+
+#sl {
+    margin-left: 50px;
+    margin-top: -15px;
+    border-radius: 50%;
+    padding: 0px 4px;
+    height: 25px;
+    font-size: 15px;
+    vertical-align: middle;
+}
+
+
+/* .pro {
+    width: 150px;
+    margin-bottom: 8px
+}
+
+.pro:hover {
+    border: 0.7px solid rgb(167, 152, 152)
+} */
+
+.card-title {
+    white-space: nowrap;
+    height: 30px;
+    width: 90%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 1.2em;
+    margin-top: -12px;
+}
+
+.blue-gradient {
+    background: -webkit-linear-gradient(50deg, #45cafc, #303f9f) !important;
+    background: -o-linear-gradient(50deg, #45cafc, #303f9f) !important;
+    background: linear-gradient(40deg, #45cafc, #303f9f) !important;
+}
+
+
+/* hover */
+
+.view {
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+}
+
+.overlay .mask {
+    opacity: 0;
+    -webkit-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+}
+
+.overlay .mask:hover {
+    opacity: 1;
+}
+
+.zoom img,
+.zoom video {
+    -webkit-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+}
+
+.zoom:hover img,
+.zoom:hover video {
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.hoverable {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-transition: all 0.55s ease-in-out;
+    -o-transition: all 0.55s ease-in-out;
+    transition: all 0.55s ease-in-out;
+}
+
+.hoverable:hover {
+    -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-transition: all 0.55s ease-in-out;
+    -o-transition: all 0.55s ease-in-out;
+    transition: all 0.55s ease-in-out;
+}
+
+
+/* Tieu de */
+
+#head {
+    background-image: url("../images/sys/tieude.jpg");
+    height: 60px;
+    margin-bottom: 5px;
+    margin-top: -4em;
+}
+
+#head li {
+    line-height: 70px;
+    font-size: 25px;
+    margin-left: 10px;
+    font-family: baloo;
+    color: #ca271c;
+}
+
+.card-title {
+    font-family: crimson_text;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+
+/*  */
+
+@keyframes height {
+    from {
+        height: 150px
+    }
+    to {
+        height: 0
+    }
+}
+
+#height {
+    animation: height 1s infinite alternate;
+}
+
+@media only screen and (max-width: 600px) {
+    #head li {
+        font-size: 23px
+    }
+}
+
+
+/* cart */

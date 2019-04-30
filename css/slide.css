@@ -1,0 +1,43 @@
+.swiper-container {
+    width: 100%;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.swiper-slide {
+    background-size: cover;
+    background-position: center;
+}
+
+.gallery-top {
+    height: 80%;
+    width: 100%;
+}
+
+.gallery-thumbs {
+    height: 20%;
+    box-sizing: border-box;
+    padding: 10px 0;
+}
+
+.gallery-thumbs .swiper-slide {
+    height: 100%;
+    opacity: 0.4;
+}
+
+.gallery-thumbs .swiper-slide-thumb-active {
+    opacity: 1;
+}
+
+@media only screen and (max-width: 600px) {
+    .gallery-top {
+        height: 50%;
+        width: 100%;
+    }
+    .gallery-thumbs {
+        height: 15%;
+        box-sizing: border-box;
+        padding: 10px 0;
+    }
+}

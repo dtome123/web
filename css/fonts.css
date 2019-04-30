@@ -1,7 +1,6 @@
 @font-face {
     font-family: "taviraj";
-    src: url(../fonts/Taviraj/Taviraj-Black.ttf);
-    font-weight: bold;
+    src: url(../fonts/Taviraj/Taviraj-Light.ttf);
 }
 
 @font-face {
@@ -11,10 +10,15 @@
 
 @font-face {
     font-family: "baloo";
-    src: url(../font/Baloo_Tamma/BalooTamma-Regular.ttf)
+    src: url(../fonts/Baloo_Tamma/BalooTamma-Regular.ttf)
 }
 
 @font-face {
-    font-family: "lob";
+    font-family: "lobster";
     src: url(../font/Lobster/Lobster-Regular.ttf)
+}
+
+@font-face {
+    font-family: "crimson_text";
+    src: url(../fonts/Crimson_Text/CrimsonText-Bold.ttf);
 }

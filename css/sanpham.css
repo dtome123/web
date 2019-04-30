@@ -1,0 +1,101 @@
+.loc {}
+
+.choose {
+    font-size: 0.7em;
+}
+
+.dropdown {
+    margin-top: 25px;
+}
+
+.dropdown button {
+    height: 30px;
+    padding: 5px
+}
+
+.src-form {
+    margin-left: 30px;
+}
+
+.src-form input {
+    height: 30px;
+}
+
+.loc li {
+    margin: 20px 20px;
+    display: block;
+}
+
+.loc .nav-item {
+    font-size: 1.3em;
+}
+
+.loc li input {
+    height: 40px;
+    margin-top: 0;
+    width: 200px;
+}
+
+.loc li .ion-search {
+    font-size: 20px;
+}
+
+.loc-div {
+    margin-left: 5px;
+}
+
+.loc-sub {
+    margin-left: 5px;
+    height: 35px;
+}
+
+
+/* .src-form2 {
+    margin-top: 5px
+} */
+
+.src-form2 input {
+    height: 35px;
+}
+
+.dis {
+    color: rgb(190, 184, 184)
+}
+
+@media only screen and (max-width: 600px) {
+    .src-form2 {
+        margin-top: 10px;
+    }
+    .dropdown {
+        margin-top: 10px;
+    }
+    .src-form2 input {
+        margin-left: -5px;
+        height: 30px;
+        width: 250px;
+        margin-top: -5px
+    }
+    .loc-div {
+        width: 125px;
+        margin-left: 5px;
+    }
+    .loc-sub {
+        margin-left: 5px;
+    }
+    .loc-div:first-child {
+        width: 140px;
+    }
+    .src-form2 button {
+        margin-top: 10px
+    }
+}
+
+@media only screen and (max-width: 970px) {
+    .src-form {
+        margin-top: 8px;
+        margin-left: 10px;
+    }
+    .dropdown {
+        margin-top: 7px;
+    }
+}

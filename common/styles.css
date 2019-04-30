@@ -32,7 +32,8 @@
 1. PRIMARY STYLES
 --------------------------------- */
 
-html {
+
+/* html {
     font-size: 100%;
     width: 100%;
     margin: 0px;
@@ -52,7 +53,7 @@ body {
     word-wrap: break-word;
     overflow-x: hidden;
     color: #333;
-}
+} */
 
 h1,
 h2,
