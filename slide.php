@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <style>
-    
-    
-    </style>
-    <link href="./plugin-frameworks/swiper.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/slide.css">
-</head>
-
-<body>
 
     <div style="height: 500px;margin-top:80px " id="slide" class=" container ">
         <!-- Swiper -->
@@ -70,7 +58,3 @@
         },
     });
     </script>
-
-</body>
-
-</html>

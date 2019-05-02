@@ -19,6 +19,8 @@
     <link href="fonts/ionicons.css" rel="stylesheet">
     <link href="common/styles.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
+    <link href="./plugin-frameworks/swiper.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/slide.css">
     <script src="plugin-frameworks/jquery.js "></script>
     <script src="plugin-frameworks/popper.js"></script>
     <script src="plugin-frameworks/bootstrap.bundle.js"></script>
@@ -68,15 +70,17 @@
                             <option  value="all"selected class="dis" >Tất cả</option>
                             <option  value="MC">Chiến thuật</option>
                             <option  value="AN">Giải trí/nhóm</option>
-                            <option  value="TM">Trẻ em</option>
-                            <option  value="DU">Gia đình</option>
+                            <option  value="GT">Trẻ em</option>
+                            <option  value="GD">Gia đình</option>
                         </select>
                         
                     </div>
                     <div class="loc-div" >
                        
                         <select name="order" id="" class="form-control">
-                            <option  value="<?php if(isset($_GET['order']))   echo $_GET['order']; else echo 3 ?>" selected class="dis">Theo giá</option>
+                            <option  value="0" selected class="dis">Theo giá-Tình trạng</option>
+                            <option  value="1">Mới nhất</option>
+                            <option  value="2">Cũ nhất</option>
                             <option  value="3">Từ thấp - cao</option>
                             <option  value="4">Từ cao - thấp</option>
                         </select>
@@ -156,13 +160,13 @@
         }, function(data) {
             $(".show").html(data);
         })
-
+        /* window.scrollTo('top', 1000) */
 
         var bottom = 800;
         $("HTML, BODY").animate({
             scrollTop: bottom
-        }, 1200);        
-
+        }, "smooth");        
+ 
     });
     </script>
 

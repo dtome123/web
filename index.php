@@ -18,6 +18,8 @@ $_SESSION['page']=1;?>
     <link href="fonts/ionicons.css" rel="stylesheet">
     <link href="common/styles.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
+    <link href="./plugin-frameworks/swiper.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/slide.css">
     <script src="plugin-frameworks/jquery.js "></script>
     <script src="plugin-frameworks/popper.js"></script>
     <script src="plugin-frameworks/bootstrap.bundle.js"></script>
@@ -66,12 +68,46 @@ $_SESSION['page']=1;?>
       </div>
         <div class="nav position-sticky container" id="head" style="margin-top:10px">
             <li class="nav-item">
-                Mua nhiều nhất
+                Mới nhất
             </li>
             <span style="margin-left:70px;margin-top:15px"><a href="sanpham.php?theloai=all" style="color:blue;font-size:20px"><i><u style="font-weight:500">Xem thêm</u> </i> </a></span>
         </div>
-        <div>
-            
+        <div class="row container" style="margin:auto">
+            <?php
+                
+                $sql="SELECT * From sanpham order by MaSP DESC limit 12";
+                $result=DataProvider::executeQuery($sql);
+                while($row=mysqli_fetch_array($result)){
+                    $row["Gia"]=number_format($row['Gia'],0,",",".");
+                    echo '<!-- Card -->
+                    <div class="card col-6 col-sm-4 col-md-3 view overlay zoom hoverable"  style="margin-bottom:15px">
+                    
+                    <!-- Card image -->
+                    <a href="chitiet.php?id='.$row["MaSP"].'">
+                    <div class="view overlay">
+                    <img class="card-img-top" src="images/sanpham/'.$row['Hinh'].'" alt="Card image cap" style="margin-top:20px;height:170px">
+                    <a href="#!">
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                    </div>
+                
+                    <!-- Card content -->
+                    <div class="card-body" style="margin-top:-5px ; font-size:1em">
+                
+                    <!-- Title -->
+                    <h4 class="card-title" data-toggle="tooltip" title="'.$row['TenSP'].'" data-placement="top">'.$row['TenSP'].'</h4>
+                    <!-- Text -->
+                    <p class="card-text gia" >Giá: '.$row['Gia'].' VNĐ</p>
+                    <!-- Button -->
+                    <button class="btn btn-primary blue-gradient them" number="'.$row['MaSP'].'" style="font-size:0.95em" >Thêm vào giỏ </button>
+                
+                    </div>
+                    </a>
+                    
+                    </div>
+                    <!-- Card -->';
+                }
+             ?>
         </div>
     </main>
     <?php
@@ -79,6 +115,30 @@ $_SESSION['page']=1;?>
     ?>
     <!-- SCIPTS -->
     <script>
+    $(".them").click(function() {
+    var masp=$(this).attr("number");
+    $.post('xuli/tontaitronggio.php',{id:masp},function(data){
+      if(data==1){
+        
+        var r=confirm("Sản phẩm đã có trong giỏ bạn có muốn thêm số lượng")
+        if(r==true){
+          $.post('xuli/xuligiohang.php', { id:masp,xuat:1 },function(data){
+            $("#sl").text(data);
+          });
+          alert("Đã tăng số lượng");
+        }
+      }
+      else {
+        $.post('xuli/xuligiohang.php', { id:masp,xuat:1 },function(data){
+            $("#sl").text(data);
+          });
+          alert("Đã thêm vào giỏ");
+      }
+        
+    })
+    
+    /* alert($(this).attr("number")); */
+});
     </script>
    
 

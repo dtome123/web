@@ -60,3 +60,20 @@ thead td {
 #empty button:hover {
     color: blue
 }
+
+input[type=button] {
+    height: 30px;
+    border: none;
+    width: 20px
+}
+
+.gia,
+.ttien {
+    text-align: center
+}
+
+@media only screen and (max-width: 600px) {
+    input[type=button] {
+        width: 40px
+    }
+}

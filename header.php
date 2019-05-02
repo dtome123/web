@@ -34,7 +34,7 @@
         });
         $(document).ready(function() {
             var l = $(".menu_item").length;
-            var theloai = new Array("MC", "AN", "TM", "GD")
+            var theloai = new Array("MC", "AN", "GT", "GD")
             var i = 0;
             $(".menu_item").each(function() {
                 $(this).attr("href", "sanpham.php?theloai=" + theloai[i]);

@@ -43,10 +43,10 @@
             $sql.="";
           }
           if($ord==1){
-            $sql.="";
+            $sql.=" ORDER BY MaSP DESC ";
           }
           if($ord==2){
-            $sql.="";
+            $sql.=" ORDER BY MaSP ASC ";
           }
           if($ord==3){
             $sql.=" ORDER BY GIA ASC ";
@@ -80,7 +80,7 @@
           <!-- Title -->
           <h4 class="card-title" data-toggle="tooltip" title="'.$row['TenSP'].'" data-placement="top">'.$row['TenSP'].'</h4>
           <!-- Text -->
-          <p class="card-text gia" >Giá: '.$row['Gia'].'</p>
+          <p class="card-text gia" >Giá: '.$row['Gia'].' VNĐ</p>
           <!-- Button -->
           <button class="btn btn-primary blue-gradient them" number="'.$row['MaSP'].'" style="font-size:0.95em" >Thêm vào giỏ </button>
       
@@ -169,7 +169,6 @@
 
 ?>
 
-
 <script>
 $(".page").click(function() {
     var pg = $(this).attr("page");
@@ -250,3 +249,4 @@ $(document).ready(function () {
   
 });
 </script>
+

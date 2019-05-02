@@ -8,13 +8,21 @@
 }
 
 .sluong2 {
-    width: 10%;
+    width: 15%;
+}
+
+.sluong2 input {
+    margin-left: 15px
 }
 
 .gia {
-    width: 20%;
+    width: 15%;
 }
 
 .ttien {
-    width: 20%;
+    width: 15%;
+}
+
+.muc {
+    font-weight: bold
 }
