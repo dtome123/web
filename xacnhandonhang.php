@@ -1,4 +1,5 @@
 <?php session_start() ?>
+<?php if(isset($_SESSION['cart'])) {?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,12 +14,14 @@
     <link href="./plugin-frameworks/swiper.css" rel="stylesheet">
     <link href="fonts/ionicons.css" rel="stylesheet">
     <link href="common/styles.css" rel="stylesheet">
+
     <link href="css/xacnhancart.css" rel="stylesheet">
     <script src="plugin-frameworks/jquery.js "></script>
     <script src="plugin-frameworks/bootstrap.js "></script>
     <script src="common/scripts.js "></script>
     <script src="js/jquery.number.js"></script>
     <script src="js/cart.js"></script>
+
     <style>
     .title span {
         font-size: 2em;
@@ -29,6 +32,27 @@
     span {
         display: inline-block;
     }
+
+    #empty {
+        background-color: rgb(229, 241, 241);
+        height: 200px;
+        margin-bottom: 50px;
+        
+        padding-top: 50px
+    }
+
+    #empty h3 {
+        color: rgb(153, 95, 9);
+        font-weight: bold
+    }
+
+    #empty button {
+        color: rgb(10, 104, 104);
+    }
+
+    #empty button:hover {
+        color: blue
+    }
     </style>
 
     <link rel="stylesheet" href="./css/style_xacnhan.css">
@@ -38,7 +62,7 @@
     <?php include "header.php" ?>
 
     <main class="container-fluid">
-        <div class="nav container " id="head" style="margin-top:200px">
+        <!--   <div class="nav container " id="head" style="margin-top:200px">
             <li class="nav-item">
 
                 Xác nhận đơn hàng
@@ -178,15 +202,14 @@
 
                             <td>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" 
-                                        id="exampleRadios1" value="option1" checked>
+                                    <input class="form-check-input" type="radio" id="exampleRadios1" value="option1"
+                                        checked>
                                     <label class="form-check-label" for="exampleRadios1">
                                         Thanh toán khi giao hàng
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" 
-                                        id="exampleRadios2" value="option2">
+                                    <input class="form-check-input" type="radio" id="exampleRadios2" value="option2">
                                     <label class="form-check-label" for="exampleRadios2">
                                         Thanh toán bằng thẻ ATM/Internet Banking
                                     </label>
@@ -200,15 +223,25 @@
                         </tr>
                         <tr>
                             <td>
-                                
-                                <input type="button" value="Đặt mua" class="btn btn-success" id="sub" style="width:150px">
+
+                                <input type="button" value="Đặt mua" class="btn btn-success" id="sub"
+                                    style="width:150px">
                             </td>
                         </tr>
 
                     </table>
                 </form>
             </div>
+        </div>-->
+        <div id="empty" class="container" style="margin-top:200px">
+            <img src="images/sys/xe.jpg" alt="" style="width:200px">
+            <h3>
+                Mã đơn hàng của bạn là:
+            </h3>
+           <p>Thời gian dự kiến giao hàng vào</p>
+
         </div>
+
     </main>
 </body>
 <script>
@@ -219,14 +252,30 @@ $("#diachi").change(function() {
         $("#txtDC").attr("disabled", "disabled");
 
 });
-$("#sub").click(function () {
-    var a=$("#total").text();
-    
 
-    $.post("xuli/updonhang.php",{tt:10000},function(data){
-        alert(data)
+$(document).ready(function() {
+    $("#sub").click(function() {
+        var a = tongtien();
+        $.post("xuli/updonhang.php", {
+            tt: a
+        }, function(data) {
+            alert("Đơn hàng đã gửi thành công");
+            location.assign(data);
+        })
+
     })
-})
+});
 </script>
 
 </html>
+<?php }
+        else{
+            $hostURL  = $_SERVER['HTTP_HOST'];
+            $dirURL   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+            $extraURL = 'cart.php';
+            $strURL = "http://" . $hostURL . $dirURL . "/" . $extraURL;
+            echo($strURL);
+            header("Location:$strURL");
+        }
+            
+?>

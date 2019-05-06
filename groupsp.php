@@ -49,7 +49,7 @@
             grp = 2;
         else 
             if ($(window).width() < 800)
-                grp = 3;
+                grp = 2;
         var swiper = new Swiper('.swiper2', {
             slidesPerView: grp,
             spaceBetween: 30,

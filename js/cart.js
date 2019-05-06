@@ -13,12 +13,18 @@ function tongtien() {
         s += parseInt($(this).attr("thanhtien"));
     });
     $("#tongtien").text(s)
-    $('#total').text(s + parseInt($("#charge").text()));
+    s = s + parseInt($("#charge").text());
+    $('#total').text(s);
+    formatnum();
+    return s;
+}
+
+function formatnum() {
     $("#tongtien").number(true, 0);
     $("#charge").number(true, 0);
     $("#total").number(true, 0);
-
 }
+
 
 function capnhat(a, sl) {
     $.get("xuli/capnhat.php", {
@@ -117,4 +123,6 @@ $(document).ready(function() {
     });
 
     tongtien();
+
+
 });

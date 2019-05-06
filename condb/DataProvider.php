@@ -1,6 +1,8 @@
 <?php
+
 class DataProvider
 {
+	
 	public static function executeQuery($sql)
 	{
 		include ('db.inc');
@@ -21,5 +23,7 @@ class DataProvider
 			showError();
 		return $result;
 	}
+	
+	
 }
 ?>

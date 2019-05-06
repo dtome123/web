@@ -42,9 +42,11 @@
           if($ord==0){
             $sql.="";
           }
+          //mới nhất
           if($ord==1){
             $sql.=" ORDER BY MaSP DESC ";
           }
+          //cũ nhất
           if($ord==2){
             $sql.=" ORDER BY MaSP ASC ";
           }
@@ -151,7 +153,8 @@
           }
 
           // hien thi cac link lien ket trang
-          echo '<nav aria-label="Page navigation example" style="margin:auto;margin-bottom:50px"><ul class="pagination" >'. $first . $prev . $nav . $next . $last . '</ul></nav>';
+          if($maxpage>1)
+            echo ' <div aria-label="Page navigation example" style="margin:auto;margin-bottom:50px"><ul class="pagination" >'. $first . $prev . $nav . $next . $last . '</ul></div>';
           //ẩn hiện thanh menu mini
           $an=0;
         }

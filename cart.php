@@ -97,7 +97,7 @@
                         <?php echo number_format($row["Gia"],0,",",".") ?>
                     </td>
                     <td data="<?php echo $row['MaSP'];?>" class="ttien"
-                        thanhtien="<?php echo $row["Gia"]*$_SESSION['cart'][$row['MaSP']] ?>">
+                        thanhtien="<?php $_SESSION['gia'][$row['MaSP']]=$row['Gia'];  echo $row["Gia"]*$_SESSION['cart'][$row['MaSP']] ?>">
                         <?php echo number_format($row["Gia"]*$_SESSION['cart'][$row['MaSP']],0,",",".") ;?>
                     </td>
                     <td align="center">
@@ -136,7 +136,7 @@
                         </span>
                         VNĐ
                     </div>
-                    <div><button class="btn "> Mua ngay</button></div>
+                    <div><button class="btn btn-primary"><a href="xacnhandonhang.php"> Mua ngay</a></button></div>
                 </div>
             </div>
 
@@ -156,7 +156,7 @@
     <!--  </form> -->
     <?php include 'footer.html' ;?>
     <script>
-
+       
     </script>
 </body>
 

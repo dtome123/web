@@ -1,5 +1,9 @@
-<?php session_start() ;
-$_SESSION['page']=1;?>
+<?php 
+session_start();
+
+$_SESSION['page']=1;
+
+?>
 <!DOCTYPE HTML>
 <html lang="en">
 
@@ -26,7 +30,7 @@ $_SESSION['page']=1;?>
     <script src="plugin-frameworks/bootstrap.js "></script>
     <script src="common/scripts.js "></script>
 
-    
+
     <style>
     .sticky {
         position: -webkit-sticky;
@@ -36,6 +40,13 @@ $_SESSION['page']=1;?>
             background-color: #cae8ca;
             border: 2px solid #4CAF50; */
     }
+
+    header .acc li.drop-down a.mouseover+ul.drop-down-menu {
+        display: block;
+        animation: full-opacity-anim .2s forwards;
+
+    }
+
     </style>
 
 
@@ -63,14 +74,15 @@ $_SESSION['page']=1;?>
             </li>
         </div>
 
-      <div class="container-fluid group" >
-        <?php include 'groupsp.php' ?>
-      </div>
+        <div class="container-fluid group">
+            <?php include 'groupsp.php' ?>
+        </div>
         <div class="nav position-sticky container" id="head" style="margin-top:10px">
             <li class="nav-item">
                 Mới nhất
             </li>
-            <span style="margin-left:70px;margin-top:15px"><a href="sanpham.php?theloai=all" style="color:blue;font-size:20px"><i><u style="font-weight:500">Xem thêm</u> </i> </a></span>
+            <span style="margin-left:70px;margin-top:15px"><a href="sanpham.php?theloai=all&order=1"
+                    style="color:blue;font-size:20px"><i><u style="font-weight:500">Xem thêm</u> </i> </a></span>
         </div>
         <div class="row container" style="margin:auto">
             <?php
@@ -116,35 +128,42 @@ $_SESSION['page']=1;?>
     <!-- SCIPTS -->
     <script>
     $(".them").click(function() {
-    var masp=$(this).attr("number");
-    $.post('xuli/tontaitronggio.php',{id:masp},function(data){
-      if(data==1){
-        
-        var r=confirm("Sản phẩm đã có trong giỏ bạn có muốn thêm số lượng")
-        if(r==true){
-          $.post('xuli/xuligiohang.php', { id:masp,xuat:1 },function(data){
-            $("#sl").text(data);
-          });
-          alert("Đã tăng số lượng");
-        }
-      }
-      else {
-        $.post('xuli/xuligiohang.php', { id:masp,xuat:1 },function(data){
-            $("#sl").text(data);
-          });
-          alert("Đã thêm vào giỏ");
-      }
-        
-    })
-    
-    /* alert($(this).attr("number")); */
-});
+        var masp = $(this).attr("number");
+        $.post('xuli/tontaitronggio.php', {
+            id: masp
+        }, function(data) {
+            if (data == 1) {
+
+                var r = confirm("Sản phẩm đã có trong giỏ bạn có muốn thêm số lượng")
+                if (r == true) {
+                    $.post('xuli/xuligiohang.php', {
+                        id: masp,
+                        xuat: 1
+                    }, function(data) {
+                        $("#sl").text(data);
+                    });
+                    alert("Đã tăng số lượng");
+                }
+            } else {
+                $.post('xuli/xuligiohang.php', {
+                    id: masp,
+                    xuat: 1
+                }, function(data) {
+                    $("#sl").text(data);
+                });
+                alert("Đã thêm vào giỏ");
+            }
+
+        })
+
+        /* alert($(this).attr("number")); */
+    });
     </script>
-   
 
 
 
-   
+
+
 </body>
 
 </html>

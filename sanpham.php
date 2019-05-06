@@ -56,8 +56,20 @@
     <main class="container position-relative" style="">
         <div class="nav " id="head">
             <li class="nav-item">
-
-                Tiêu đề
+            <?php 
+                if(isset($_GET['tim'])){
+                    echo 'Kết quả tìm kiếm của  " '.$_GET['tim'].' "';
+                }
+                else{
+                    require "condb/DataProvider.php";
+                    $sql="SELECT * from theloai where MaTheLoai='".$_GET["theloai"];
+                    $sql.="'";
+                    $re=DataProvider::executeQuery($sql);
+                    $row=mysqli_fetch_array($re);
+                    echo $row['TenTL'];
+                }
+            ?>
+                
             </li>
         </div>
         <form action="">
