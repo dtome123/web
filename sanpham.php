@@ -1,4 +1,5 @@
 <?php session_start() ;
+
 ?>
 <!DOCTYPE HTML>
 <html lang="en">
@@ -62,11 +63,15 @@
                 }
                 else{
                     require "condb/DataProvider.php";
-                    $sql="SELECT * from theloai where MaTheLoai='".$_GET["theloai"];
-                    $sql.="'";
-                    $re=DataProvider::executeQuery($sql);
-                    $row=mysqli_fetch_array($re);
-                    echo $row['TenTL'];
+                    if($_GET['theloai']!='all'){
+                        $sql="SELECT * from theloai where MaTheLoai='".$_GET["theloai"];
+                        $sql.="'";
+                        $re=DataProvider::executeQuery($sql);
+                        $row=mysqli_fetch_array($re);
+                        echo $row['TenTL'];
+                    }
+                    else
+                        echo "Tất cả thể loại";
                 }
             ?>
                 

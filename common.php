@@ -6,14 +6,14 @@ Minh họa PHP session:
 + common.php
 + logout.php
 */
-
-
-
 function isLogined()
 {
 	//echo('@:' . $_SESSION['username']);	
-	if(empty($_SESSION['username']))
+	
+	if(empty($_COOKIE['username'])){
+		unset($_SESSION['id']);
 		return false;
+	}
 	return true;
 }
 

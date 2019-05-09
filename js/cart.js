@@ -92,9 +92,9 @@ $(document).ready(function() {
         /* $.post('xuli/xuligiohang.php', {
             
         }); */
-        $.post('xuli/xuligiohang.php', { id: $(this).attr("number"), xuat: 1 }, function(data) {
+        /* $.post('xuli/xuligiohang.php', { id: $(this).attr("number"), xuat: 1 }, function(data) {
             $("#sl").text(data);
-        });
+        }); */
 
     });
     $(".xoa").click(function() {

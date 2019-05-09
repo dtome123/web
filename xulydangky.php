@@ -1,16 +1,16 @@
 <?php
-   	$connect = mysqli_connect('localhost','root','');
-$db = mysqli_select_db($connect,"formuser");
+   	require "condb/DataProvider.php";
 	if(isset($_POST['register'])){
 		$username=$_POST['username'];
+		$username2=$_POST['username2'];
 		$email=$_POST['email'];
 		$password=$_POST['password'];
 		$number=$_POST['number'];
 		$birth=$_POST['birth'];
 		$sex=$_POST['sex'];
-		
-		$sql="INSERT INTO `userinfo`(`ten`, `email`, `mk`, `dienthoai`, `ngaysinh`, `gioitinh`) VALUES ('$username','$email','$password','$number','$birth','$sex')";
-			$query=mysqli_query($connect,$sql);		
+		$dc=$_POST['diachi'];
+		$sql="INSERT INTO `khachhang` ( `TenKH`, `TenDN`, `Email`, `Pass`, `SoDT`, `NgaySinh`, `GioiTinh`,`DiaChi`) values('$username','$username2','$email','$password','$number','$birth','$sex','$dc')";
+		$query=DataProvider::executeQuery($sql);		
 	}
 	if($query)
 		echo "<p style='font-size:20px'>Quá trình đăng ký thành công.<p><a href='index.php'>Về trang chủ</a>";

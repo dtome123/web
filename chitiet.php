@@ -1,4 +1,5 @@
-<?php session_start() ;?>
+<?php session_start() ;
+?>
 <!DOCTYPE HTML>
 <html lang="en">
 
@@ -16,6 +17,7 @@
     <link href="common/styles.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/fonts.css">
     <script src="plugin-frameworks/jquery.js"></script>
+    <script src="plugin-frameworks/popper.js"></script>
     <script src="plugin-frameworks/bootstrap.js"></script>
     <script src="common/scripts.js"></script>
 
@@ -139,14 +141,32 @@
 
 
 <script>
+   
+    $(".them").click(function() {
+    var masp=$(this).attr("number");
+    $.post('xuli/tontaitronggio.php',{id:masp},function(data){
+      if(data==1){
+        
+        var r=confirm("Sản phẩm đã có trong giỏ bạn có muốn thêm số lượng")
+        if(r==true){
+          $.post('xuli/xuligiohang.php', { id:masp,xuat:1 },function(data){
+            $("#sl").text(data);
+          });
+          alert("Đã tăng số lượng");
+        }
+      }
+      else {
+        $.post('xuli/xuligiohang.php', { id:masp,xuat:1 },function(data){
+            $("#sl").text(data);
+          });
+          alert("Đã thêm vào giỏ");
+          $("#detail").text("(Đã có trong giỏ hàng)"); 
+      }
+        
+    })
     
-    $(".them").click(function () { 
-        alert('Đã thêm thành công');
-        $("#detail").text("(Đã có trong giỏ hàng)"); 
-        
-        
-
-    });
+    /* alert($(this).attr("number")); */
+});
 
 </script>
 

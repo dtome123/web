@@ -1,4 +1,6 @@
-<?php session_start() ?>
+<?php session_start();
+
+?>
 <?php if(isset($_SESSION['cart'])) {?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,7 +39,7 @@
         background-color: rgb(229, 241, 241);
         height: 200px;
         margin-bottom: 50px;
-        
+
         padding-top: 50px
     }
 
@@ -60,9 +62,9 @@
 
 <body>
     <?php include "header.php" ?>
-
+    <?php if(isLogined()){ ?>
     <main class="container-fluid">
-        <!--   <div class="nav container " id="head" style="margin-top:200px">
+         <div class="nav container " id="head" style="margin-top:200px">
             <li class="nav-item">
 
                 Xác nhận đơn hàng
@@ -155,11 +157,15 @@
                 <form method="get" action="">
                     <table>
                         <tr>
+                        <?php $sql="SELECT * from khachhang where MaKH=".$_SESSION['iduser'];
+                              $result=DataProvider::executeQuery($sql);
+                              $row=mysqli_fetch_array($result);
+                         ?>
                             <td class="muc">
                                 Tên khách hàng
                             </td>
                             <td>
-                                <input type="text" class="form-control" disabled>
+                                <input type="text" class="form-control" disabled value="<?php echo $row['TenKH']  ?>">
                             </td>
                         </tr>
                         <tr>
@@ -167,7 +173,7 @@
                                 Số điện thoại
                             </td>
                             <td>
-                                <input type="text" class="form-control" disabled>
+                                <input type="text" class="form-control" disabled value="<?php echo $row['SoDT']  ?>" >
                             </td>
                         </tr>
                         <tr>
@@ -175,18 +181,13 @@
                                 Địa chỉ giao hàng
 
                             </td>
-                            <td>
-                                <select name="diachi" id="diachi" class="form-control">
-                                    <option value="0">Địa chỉ đăng kí</option>
-                                    <option value="1">Địa chỉ khác</option>
-                                </select>
-                            </td>
+                            
                         </tr>
                         <tr>
                             <td></td>
                             <td>
                                 <textarea name="txtDC" id="txtDC" cols="30" rows="5" disabled
-                                    class="form-control"></textarea>
+                                    class="form-control" ><?php echo $row['DiaChi']  ?></textarea>
                             </td>
                         </tr>
                         <tr style="margin-top:50px">
@@ -232,24 +233,21 @@
                     </table>
                 </form>
             </div>
-        </div>-->
-        <div id="empty" class="container" style="margin-top:200px">
-            <img src="images/sys/xe.jpg" alt="" style="width:200px">
-            <h3>
-                Mã đơn hàng của bạn là:
-            </h3>
-           <p>Thời gian dự kiến giao hàng vào</p>
-
         </div>
-
+        
     </main>
 </body>
 <script>
 $("#diachi").change(function() {
-    if ($(this).val() == 1)
+    if ($(this).val() == 1){
+
         $("#txtDC").removeAttr("disabled");
-    else
+        $("#txtDC").text("");
+    }
+    else{
+        $("#txtDC").text("<?php echo $row['DiaChi'] ?>");
         $("#txtDC").attr("disabled", "disabled");
+    }
 
 });
 
@@ -260,7 +258,7 @@ $(document).ready(function() {
             tt: a
         }, function(data) {
             alert("Đơn hàng đã gửi thành công");
-            location.assign(data);
+            $('main').html(data);
         })
 
     })
@@ -278,4 +276,14 @@ $(document).ready(function() {
             header("Location:$strURL");
         }
             
+?>
+<?php }
+else {
+    $hostURL  = $_SERVER['HTTP_HOST'];
+    $dirURL   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+    $extraURL = 'cart.php';
+    $strURL = "http://" . $hostURL . $dirURL . "/" . $extraURL;
+    echo($strURL);
+    header("Location:$strURL");
+}
 ?>

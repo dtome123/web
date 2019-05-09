@@ -16,12 +16,14 @@
     <link href="fonts/ionicons.css" rel="stylesheet">
     <link href="common/styles.css" rel="stylesheet">
     <script src="plugin-frameworks/jquery.js "></script>
+    <script src="plugin-frameworks/popper.js"></script>
     <script src="plugin-frameworks/bootstrap.js "></script>
     <script src="common/scripts.js "></script>
 
     <link rel="stylesheet" href="./css/style_cart.css">
     <script src="js/jquery.number.js"></script>
     <script src="js/cart.js"></script>
+    
 </head>
 
 <body>
@@ -136,7 +138,7 @@
                         </span>
                         VNĐ
                     </div>
-                    <div><button class="btn btn-primary"><a href="xacnhandonhang.php"> Mua ngay</a></button></div>
+                    <div><button class="btn btn-primary" id="xn"> Mua ngay</button></div>
                 </div>
             </div>
 
@@ -156,7 +158,19 @@
     <!--  </form> -->
     <?php include 'footer.html' ;?>
     <script>
-       
+      <?php if(isLogined()){ ?>
+        $("#xn").click(function () { 
+            var r=confirm("Bạn xác nhận mua hàng");
+            if(r==true)
+                window.location="xacnhandonhang.php";
+        });
+      <?php }
+      else { ?>
+        $("#xn").click(function () { 
+            alert("Bạn phải đăng nhập mới được mua hàng")
+        });
+      <?php }
+      ?>
     </script>
 </body>
 

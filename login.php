@@ -1,34 +1,6 @@
 <?php
  session_start();
-// Xử lý đăng nhập
-		if(isset($_POST['login'])){
-			$connect = mysqli_connect('localhost','root','');
-			$db = mysqli_select_db($connect,"formuser");
-			
-			$username=$_POST['username'];
-			$password=$_POST['password'];
-			
-			$sql=sprintf("SELECT * FROM `userinfo` WHERE ten='%s'",mysqli_real_escape_string($username));
-			$query=mysqli_query($connect,$sql);
-			// Lay mat khau trong database ra
-			$row = mysqli_fetch_array($query);
-			if((mysqli_num_rows($query)==0 && $password != $row['mk']) || (mysqli_num_rows($query)==0 && $password == $row['mk']) ){
-				echo "Tên đăng nhập này không tồn tại.";
-			}	
-      // So sánh 2 mat khau có trùng không				
-      if (mysqli_num_rows($query)==1 &&$password != $row['mk']) {
-      echo "Mật khẩu không đúng.";
-      }			
-      else{
-        $_SESSION['USER_ID'] = $username;
-        //echo('Logined');
-        mysqli_close($connect);
-      }
-      mysqli_close($connect);
-    }
-    
-    
-?>
+ ?>
 <!DOCTYPE html>
 <html>
 
@@ -91,9 +63,10 @@
         padding: 12px;
     }
     </style>
+    <script src="plugin-frameworks/jquery.js "></script>
 </head>
 
-<body style="width:700px; height:100% ;margin-left:420px; margin-top:80px">
+<body style="width:700px; height:500px ;margin-left:420px; margin-top:80px">
 
     <div style="width:500px; height:100%">
         <form method="POST" onsubmit="return Validate()" name="vform" action='login.php'>
@@ -123,10 +96,43 @@
                 <p>Bạn chưa có tài khoản ?<a href="register.php" style="text-decoration: none"> Đăng ký</a></p>
             </div>
         </form>
-
+	<div id="loi" style="margin-top:50px; margin-left:80px ; font-size:24px ; color:red">
+<?php
+// Xử lý đăng nhập
+		if(isset($_POST['login'])){
+            require "condb/DataProvider.php";
+			
+			
+			$username=$_POST['username'];
+			$password=$_POST['password'];
+			
+			$sql="SELECT * FROM `khachhang` WHERE TenDN='$username'";
+			$query=DataProvider::executeQuery($sql);
+			// Lay mat khau trong database ra
+			$row = mysqli_fetch_array($query);
+			if((mysqli_num_rows($query)==0 && $password != $row['Pass']) || (mysqli_num_rows($query)==0 && $password == $row['Pass']) ){
+				echo "Tên đăng nhập này không tồn tại.";
+			}
+				// So sánh 2 mat khau có trùng không				
+				if (mysqli_num_rows($query)==1 &&$password != $row['Pass']) {
+        echo "Mật khẩu của bạn không đúng.";
+    }			
+			if(mysqli_num_rows($query)==1 &&$password == $row['Pass']){
+				setcookie('username',$_POST['username'],time()+10000);
+				$_SESSION['iduser']=$row['MaKH'];
+                echo "<script>
+                    $(document).ready(function(){
+                        alert('Bạn đã đăng nhập thành công')
+                        history.go(-2);
+                    })
+                </script>";
+	        }
+		}
+?></div>
     </div>
 </body>
 <script>
+
 var username = document.forms['vform']['username'];
 var password = document.forms['vform']['password'];
 
@@ -148,7 +154,9 @@ function Validate() {
     } else {
         password_error.textContent = "";
     }
+    
 }
+
 </script>
 
 </html>

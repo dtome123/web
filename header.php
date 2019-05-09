@@ -9,18 +9,18 @@
                 <p class="border">Đăng kí</p>
         </div> -->
         <div class="btn-group" style="float:right;margin-right:70px;margin-top:15px;width:130px ">
-            <button type="button" class="btn btn-danger">Tài khoản</button>
+            <button type="button" class="btn btn-danger"><?php if(isset($_COOKIE['username'])) echo $_COOKIE['username']; else echo "Tài khoản"; ?></button>
             <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 <span class="sr-only">Toggle Dropdown</span>
             </button>
             <div class="dropdown-menu" >
                 <!-- Xuat hien khi dang nhap -->
-                <?php require('common.php');
+                <?php require "common.php";
                  if(isLogined()){ ?>
                 <a class="dropdown-item" href="#">Thông tin</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Đăng xuất</a>
+                <a class="dropdown-item" id="thoat" href="xuli/thoat.php?username=<?php echo $_COOKIE['username']  ?>">Đăng xuất</a>
                 <?php }
                 else{?>
                 <a class="dropdown-item" href="login.php">Đăng nhập</a>
@@ -68,7 +68,6 @@
             $(this).attr("href", "sanpham.php?theloai=" + theloai[i]);
             i++;
         });
-
     });
     </script>
     <script src="common/scripts.js"></script>
