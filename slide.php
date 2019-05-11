@@ -4,11 +4,11 @@
         <!-- Swiper -->
         <div class="swiper-container gallery-top gallery-top1 " style="margin-bottom: 20px">
             <div class="swiper-wrapper ">
-                <div class="swiper-slide " style="background-image: url(./images/1.jpg) "></div>
-                <div class="swiper-slide " style="background-image: url(./images/2.jpg) "></div>
-                <div class="swiper-slide " style="background-image: url(./images/3.jpg) "></div>
-                <div class="swiper-slide " style="background-image: url(./images/4.jpg) "></div>
-                <div class="swiper-slide " style="background-image: url(./images/5.jpg) "></div>
+                <div class="swiper-slide " > <img src="./images/1.jpg" alt="" style="max-height:100%"></div>
+                <div class="swiper-slide " > <img src="./images/2.jpg" alt="" style="max-height:100%"></div>
+                <div class="swiper-slide " > <img src="./images/3.jpg" alt="" style="max-height:100%"></div>
+                <div class="swiper-slide " > <img src="./images/4.jpg" alt="" style="max-height:100%"></div>
+                <div class="swiper-slide " > <img src="./images/5.jpg" alt="" style="max-height:100%"></div>
             </div>
             <!-- Add Arrows -->
             <div class="swiper-button-next swiper-button-white swiper-button-next1 "></div>
@@ -16,12 +16,12 @@
         </div>
         <div class="swiper-container gallery-thumbs gallery-thumbs1 " style="margin-bottom:0px">
             <div class="swiper-wrapper ">
-                <div class="swiper-slide " style="background-image: url(./images/1.jpg) "></div>
-                <div class="swiper-slide " style="background-image: url(./images/2.jpg) "></div>
-                <div class="swiper-slide " style="background-image: url(./images/3.jpg) "></div>
-                <div class="swiper-slide " style="background-image: url(./images/4.jpg) "></div>
-                <div class="swiper-slide " style="background-image: url(./images/5.jpg) "></div>
-                >
+                <div class="swiper-slide " > <img src="./images/1.jpg" alt="" style="max-height:100%"></div>
+                <div class="swiper-slide " > <img src="./images/2.jpg" alt="" style="max-height:100%"></div>
+                <div class="swiper-slide " > <img src="./images/3.jpg" alt="" style="max-height:100%"></div>
+                <div class="swiper-slide " > <img src="./images/4.jpg" alt="" style="max-height:100%"></div>
+                <div class="swiper-slide " > <img src="./images/5.jpg" alt="" style="max-height:100%"></div>
+                
             </div>
         </div>
     </div>

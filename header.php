@@ -20,8 +20,8 @@
                  if(isLogined()){ ?>
                 <a class="dropdown-item" href="#">Thông tin</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" id="thoat" href="xuli/thoat.php?username=<?php echo $_COOKIE['username']  ?>">Đăng xuất</a>
-                <?php }
+                <a class="dropdown-item" id="thoat" href="thoat.php">Đăng xuất</a>
+                <?php  }
                 else{?>
                 <a class="dropdown-item" href="login.php">Đăng nhập</a>
                 <a class="dropdown-item" href="register.php">Đăng kí</a>
@@ -62,7 +62,7 @@
     });
     $(document).ready(function() {
         var l = $(".menu_item").length;
-        var theloai = new Array("MC", "AN", "GT", "GD")
+        var theloai = new Array("CT", "GT", "TE", "GD")
         var i = 0;
         $(".menu_item").each(function() {
             $(this).attr("href", "sanpham.php?theloai=" + theloai[i]);

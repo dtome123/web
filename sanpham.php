@@ -29,7 +29,7 @@
     <script src="common/scripts.js "></script>
 
     <style>
-        
+
 
     </style>
 
@@ -57,7 +57,7 @@
     <main class="container position-relative" style="">
         <div class="nav " id="head">
             <li class="nav-item">
-            <?php 
+                <?php 
                 if(isset($_GET['tim'])){
                     echo 'Kết quả tìm kiếm của  " '.$_GET['tim'].' "';
                 }
@@ -74,52 +74,55 @@
                         echo "Tất cả thể loại";
                 }
             ?>
-                
+
             </li>
         </div>
         <form action="">
             <div class="nav loc" id="menu_mini">
-                
-                    <span style="font-size:25px;font-family:lobster"> <i> Lọc</i> <img src="images/sys/loc.png" style="height:20px;width:15px" alt=""></span>
-                   
-                    <div class="loc-div" >
-                        <select name="theloai" id="" class="form-control">
-                            <option  value="all"selected class="dis" >Tất cả</option>
-                            <option  value="MC">Chiến thuật</option>
-                            <option  value="AN">Giải trí/nhóm</option>
-                            <option  value="GT">Trẻ em</option>
-                            <option  value="GD">Gia đình</option>
-                        </select>
-                        
-                    </div>
-                    <div class="loc-div" >
-                       
-                        <select name="order" id="" class="form-control">
-                            <option  value="0" selected class="dis">Theo giá-Tình trạng</option>
-                            <option  value="1">Mới nhất</option>
-                            <option  value="2">Cũ nhất</option>
-                            <option  value="3">Từ thấp - cao</option>
-                            <option  value="4">Từ cao - thấp</option>
-                        </select>
-                    </div>
-                    <input type="submit"  class="btn-primary loc-sub" value="Lọc ">
-                
+
+                <span style="font-size:25px;font-family:lobster"> <i> Lọc</i> <img src="images/sys/loc.png"
+                        style="height:20px;width:15px" alt=""></span>
+
+                <div class="loc-div">
+                    <select name="theloai" id="" class="form-control">
+                        <option value="all" selected class="dis">Tất cả</option>
+                        <option value="CT">Chiến thuật</option>
+                        <option value="GT">Giải trí/nhóm</option>
+                        <option value="TE">Trẻ em</option>
+                        <option value="GD">Gia đình</option>
+                    </select>
+
+                </div>
+                <div class="loc-div">
+
+                    <select name="order" id="" class="form-control">
+                        <option value="0" selected class="dis">Theo giá-Tình trạng</option>
+                        <option value="1">Mới nhất</option>
+                        <option value="2">Cũ nhất</option>
+                        <option value="3">Từ thấp - cao</option>
+                        <option value="4">Từ cao - thấp</option>
+                    </select>
+                </div>
+                <input type="submit" class="btn-primary loc-sub" value="Lọc ">
+
 
         </form>
         <div>
             <form class="src-form src-form2" action="sanpham.php">
                 <input type="text" placeholder="Search here" name="tim">
                 <input type="text" name="theloai" value="all" style="display:none" placeholder="Search here">
-                <button type="submit" class="border " style="height:30px;width:30px"><i class="ion-search  " style="font-size:20px" ></i></button>
+                <button type="submit" class="border " style="height:30px;width:30px"><i class="ion-search  "
+                        style="font-size:20px"></i></button>
             </form>
         </div>
 
         </div>
-        
-        <div class="row show">
 
-
-
+        <div>
+            
+            <div class="row show">
+           
+            </div>
         </div>
 
 
@@ -132,7 +135,7 @@
         include "footer.html"
     ?>
     <!-- SCIPTS -->
-   
+
 
     <!--Zoom effect-->
     <!-- <div class="view overlay zoom">
@@ -159,7 +162,7 @@
         $("#xem").text("<?php echo $_SESSION['page'] ?>");
 
     });
-    
+
     $(".choose,.loc-sub").click(function() {
         $.get("xuli/repage.php", {
             re: 1
@@ -177,13 +180,14 @@
         }, function(data) {
             $(".show").html(data);
         })
+        
         /* window.scrollTo('top', 1000) */
 
         var bottom = 800;
         $("HTML, BODY").animate({
             scrollTop: bottom
-        }, "smooth");        
- 
+        }, "smooth");
+
     });
     </script>
 
