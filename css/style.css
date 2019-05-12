@@ -180,3 +180,27 @@ header .dropdown-menu {
     border: 1px solid rgba(0, 0, 0, 0.15);
     border-radius: 0.25rem;
 }
+
+
+/* báo rỗng */
+
+#empty {
+    background-color: rgb(229, 241, 241);
+    height: 200px;
+    margin-bottom: 50px;
+    text-align: center;
+    padding-top: 50px
+}
+
+#empty h3 {
+    color: rgb(153, 95, 9);
+    font-weight: bold
+}
+
+#empty button {
+    color: rgb(10, 104, 104);
+}
+
+#empty button:hover {
+    color: blue
+}

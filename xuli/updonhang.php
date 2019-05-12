@@ -5,7 +5,7 @@
     $date= date('Y-m-d');
     
     $tien=(int) $_POST['tt'];
-    $sql="INSERT into HoaDon(MaKH,NgayMua,ThanhTien) values($makh,'$date',$tien)";
+    $sql="INSERT into HoaDon(MaKH,NgayMua,ThanhTien,TrangThai) values($makh,'$date',$tien,'Đang giao')";
     
     $connection = mysqli_connect($hostName,$username,$password);
     if (!$connection)

@@ -1,4 +1,6 @@
-
+<?php
+/* require "condb/DataProvider.php"; */
+ ?>
 <header>
     <div class="img-bg bg-1 bg-layer-4"></div>
     <a class="logo" href="index.php" ><img src="images/sys/logo.png" alt="Logo" style="width:100px;height:80px" ><img src="images/sys/name.png" alt="" style="height:80px" id="name_web"></a>
@@ -48,10 +50,17 @@
 
     <ul class="main-menu" id="main-menu" style="float: left;margin-top:10px">
         <li><a href="index.php">Home</a></li>
-        <li><a href="#" class="menu_item">Chiến thuật</a></li>
-        <li><a href="#" class="menu_item">Giải trí/nhóm</a></li>
+        <?php 
+           $sql="SELECT * From theloai ";
+           $result=DataProvider::executeQuery($sql);
+           while($row=mysqli_fetch_array($result)){
+        ?>
+                    
+        <li><a href="sanpham.php?theloai=<?php echo $row["MaTheLoai"]?>" class="menu_item"><?php echo $row["TenTL"]?></a></li>
+        <?php }?>
+        <!-- <li><a href="#" class="menu_item">Giải trí/nhóm</a></li>
         <li><a href="#" class="menu_item">Trẻ em</a></li>
-        <li><a href="#" class="menu_item">Gia đình</a></li>
+        <li><a href="#" class="menu_item">Gia đình</a></li> -->
     </ul>
     <script>
     $('.menu_item').click(function() {
@@ -60,7 +69,7 @@
         });
 
     });
-    $(document).ready(function() {
+    /* $(document).ready(function() {
         var l = $(".menu_item").length;
         var theloai = new Array("CT", "GT", "TE", "GD")
         var i = 0;
@@ -68,7 +77,7 @@
             $(this).attr("href", "sanpham.php?theloai=" + theloai[i]);
             i++;
         });
-    });
+    }); */
     </script>
     <script src="common/scripts.js"></script>
     <div class="clearfix"></div>

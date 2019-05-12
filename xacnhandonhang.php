@@ -1,5 +1,5 @@
 <?php session_start();
-
+  require "condb/DataProvider.php";
 ?>
 <?php if(isset($_SESSION['cart'])) {?>
 <!DOCTYPE html>
@@ -19,6 +19,7 @@
 
     <link href="css/xacnhancart.css" rel="stylesheet">
     <script src="plugin-frameworks/jquery.js "></script>
+    <script src="plugin-frameworks/popper.js"></script>
     <script src="plugin-frameworks/bootstrap.js "></script>
     <script src="common/scripts.js "></script>
     <script src="js/jquery.number.js"></script>
@@ -60,7 +61,7 @@
     <link rel="stylesheet" href="./css/style_xacnhan.css">
 </head>
 
-<body>
+<body >
     <?php include "header.php" ?>
     <?php if(isLogined()){ ?>
     <main class="container-fluid">
@@ -87,7 +88,7 @@
                     </thead>
                     <tbody>
                         <?php 
-                   require "condb/DataProvider.php";
+                  /*  require "condb/DataProvider.php"; */
                    
                    
                    foreach ($_SESSION['cart'] as $key => $value) {
@@ -132,7 +133,7 @@
             <div class="col-md-6 border" style="margin-top:50px">
                 <div>
                     <div>
-                        Tổng thành tiền :
+                        <b style="color:red">Tạm tính :</b>
                         <span id="tongtien">
 
                         </span>
@@ -140,12 +141,12 @@
                     </div>
                     <div>
                         <span>
-                            Phí giao hàng: <span id="charge"> 0</span> VNĐ
+                            <b style="color:red">Phí giao hàng:</b> <span id="charge"> 0</span> VNĐ
                         </span>
                     </div>
                     <div>
                         <hr>
-                        Tổng cộng:
+                        <b style="color:red">Tổng cộng:</b>
                         <span id="total">
 
                         </span>
@@ -161,7 +162,7 @@
                               $result=DataProvider::executeQuery($sql);
                               $row=mysqli_fetch_array($result);
                          ?>
-                            <td class="muc">
+                            <td class="muc" style="color:blue">
                                 Tên khách hàng
                             </td>
                             <td>
@@ -169,7 +170,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="muc">
+                            <td class="muc" style="color:blue">
                                 Số điện thoại
                             </td>
                             <td>
@@ -177,7 +178,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="muc">
+                            <td class="muc" style="color:blue">
                                 Địa chỉ giao hàng
 
                             </td>
@@ -192,7 +193,7 @@
                         </tr>
                         <tr style="margin-top:50px">
 
-                            <td class="muc">
+                            <td class="muc" style="color:blue">
                                 Hình thức thanh toán
                             </td>
 
@@ -203,14 +204,14 @@
 
                             <td>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" id="exampleRadios1" value="option1"
+                                    <input class="form-check-input" type="radio" id="exampleRadios1" value="option1" name="xn"
                                         checked>
                                     <label class="form-check-label" for="exampleRadios1">
                                         Thanh toán khi giao hàng
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" id="exampleRadios2" value="option2">
+                                    <input class="form-check-input" type="radio" id="exampleRadios2" value="option2" name="xn">
                                     <label class="form-check-label" for="exampleRadios2">
                                         Thanh toán bằng thẻ ATM/Internet Banking
                                     </label>
@@ -267,13 +268,12 @@ $(document).ready(function() {
 
 </html>
 <?php }
-        else{
-            $hostURL  = $_SERVER['HTTP_HOST'];
-            $dirURL   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-            $extraURL = 'cart.php';
-            $strURL = "http://" . $hostURL . $dirURL . "/" . $extraURL;
-            echo($strURL);
-            header("Location:$strURL");
+         else{
+            echo "<script>
+            $(document).ready(function(){
+                history.back();
+            })
+        </script>";
         }
             
 ?>

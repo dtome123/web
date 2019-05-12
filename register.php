@@ -1,3 +1,7 @@
+<?php 
+session_start();
+require "condb/DataProvider.php"
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,12 +9,25 @@
     <meta charset="UTF-8">
     <title>Form validation with JavaScript</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="plugin-frameworks/bootstrap.css" rel="stylesheet">
+    <link href="./plugin-frameworks/swiper.css" rel="stylesheet">
+    <link href="fonts/ionicons.css" rel="stylesheet">
+    <link href="common/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="./plugin-frameworks/swiper.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/slide.css">
+    <script src="plugin-frameworks/jquery.js "></script>
+    <script src="plugin-frameworks/popper.js"></script>
+    <script src="plugin-frameworks/bootstrap.bundle.js"></script>
+    <script src="plugin-frameworks/bootstrap.js "></script>
+    <script src="common/scripts.js "></script>
     <style>
     .label {
         display: inline-block;
         font-size: 1.2em;
         font-weight: bold;
-        width: 180px;
+        width: 200px;
         padding: 6px;
         color: #464646;
     }
@@ -52,89 +69,127 @@
     }
 
     #btn {
-        width: 100%;
+        width: 80%;
         border: none;
         margin-top: 5px;
+
         color: white;
         background-color: #3b5998;
         border-radius: 5px;
         padding: 12px;
     }
+
+    #divcon {
+        margin-left: 250px
+    }
+
+    @media only screen and (max-width: 600px) {
+        #divcon {
+            margin-left: 50px
+        }
+
+        #divsex {
+            margin-left: -60px
+        }
+    }
+    #main2 {
+        margin-top: 300px;
+       /*  background-image: url(./images/sys/res.jpg); */
+    }
+
     </style>
     <script src="plugin-frameworks/jquery.js"></script>
 </head>
 
-<body style="width:700px; height:100% ;margin-left:420px; margin-top:80px">
+<body style="">
 
-    <div style="width:500px; height:100%">
-        <form method="POST" onsubmit="return Validate()" name="vform" action="xulydangky.php">
-            <div align="center">
-                <h1>Đăng Ký Tài Khoản</h1>
-            </div>
-            <br>
-            <div id="username_div">
-                <label class="label">Họ Tên</label>
-                <input type="text" name="username" id="username" class="textInput form-control">
-                <div id="name_error" style="margin-left:200px; color:red"></div>
-            </div>
-            <br>
-            <div id="username_div2">
-                <label class="label">Tên đăng nhập</label>
-                <input type="text" name="username2" id="username2" class="textInput form-control">
-                <div id="name_error2" style="margin-left:200px; color:red"></div>
-            </div>
-            <br>
-            <div id="email_div">
-                <label class="label">Email</label>
-                <input type="email" id="email" name="email" class="textInput form-control">
-                <div id="email_error" style="margin-left:200px; color:red"></div>
-            </div>
-            <br>
-            <div id="password_div">
-                <label class="label">Mật Khẩu</label>
-                <input type="password" name="password" class="textInput form-control">
-            </div>
-            <br>
-            <div id="pass_confirm_div">
-                <label class="label">Nhập Lại Mật Khẩu</label>
-                <input type="password" name="password_confirm" class="textInput form-control">
-                <div id="password_error" style="margin-left:200px"></div>
-            </div>
-            <br>
-            <div id="number_div">
-                <label class="label">Điện Thoại</label>
-                <input type="text" name="number" class="textInput form-control">
-                <div id="number_error" style="margin-left:200px"></div>
-            </div>
-            <br>
-            <div id="birth_div">
-                <label class="label">Ngày Sinh</label>
-                <input type="date" id="date" class="birthday" style="width: 262px" name="birth">
-                <div id="birth_error" style="margin-left:200px"></div>
-            </div>
-            <br>
-            <div>
-                <label class="label">Giới Tính</label>
-                <label class="sex">Nam</label><input type="radio" name="sex" value="Nam" checked />&emsp;<label
-                    class="sex">Nữ</label><input type="radio" name="sex" value="Nu" />
-            </div>
-            <br>
-            <div>
-                <label class="label" style="vertical-align: top;">Địa chỉ</label>
-                <textarea name="diachi" id="" cols="30" rows="10" class="textInput form-control" required></textarea>
-            </div>
-            <br>
-            <div>
-                <hr>
-            </div>
-            <div>
-                <input type="submit" name="register" value="Đăng Ký" id="btn" class="textInput">
-            </div>
-            <div style="margin-left:100px">
-                <p>Bạn đã có tài khoản ?<a href="login.php" style="text-decoration: none"> Đăng nhập</a></p>
-            </div>
-        </form>
-    </div>
+    <?php
+        include "header.php"
+    ?>
+    <main class="container-fluid" id="main2" >
+        <div class="container">
+        
+            <form method="POST" onsubmit="return Validate()" name="vform" action="xulydangky.php">
+                <div align="center">
+                    <h2 style="font-family:crimson_text;color:  rgb(56, 56, 248)">Đăng Ký Tài Khoản</h2>
+                </div>
+                <br>
+                <div style="" id="divcon">
+                    <div id="username_div">
+                        <label class="label">Họ Tên</label>
+                        <input type="text" name="username" id="username" class="textInput form-control">
+                        <div id="name_error" style="margin-left:200px; color:red"></div>
+                    </div>
+                    <br>
+                    <div id="username_div2">
+                        <label class="label">Tên đăng nhập</label>
+                        <input type="text" name="username2" id="username2" class="textInput form-control">
+                        <div id="name_error2" style="margin-left:200px; color:red"></div>
+                    </div>
+                    <br>
+                    <div id="email_div">
+                        <label class="label">Email</label>
+                        <input type="email" id="email" name="email" class="textInput form-control">
+                        <div id="email_error" style="margin-left:200px; color:red"></div>
+                    </div>
+                    <br>
+                    <div id="password_div">
+                        <label class="label">Mật Khẩu</label>
+                        <input type="password" name="password" class="textInput form-control">
+                    </div>
+                    <br>
+                    <div id="pass_confirm_div">
+                        <label class="label">Nhập Lại Mật Khẩu</label>
+                        <input type="password" name="password_confirm" class="textInput form-control">
+                        <div id="password_error" style="margin-left:200px"></div>
+                    </div>
+                    <br>
+                    <div id="number_div">
+                        <label class="label">Điện Thoại</label>
+                        <input type="text" name="number" class="textInput form-control">
+                        <div id="number_error" style="margin-left:200px"></div>
+                    </div>
+                    <br>
+                    <div id="birth_div">
+                        <label class="label">Ngày Sinh</label>
+                        <input type="date" id="date" class="birthday" style="width: 262px" name="birth">
+                        <div id="birth_error" style="margin-left:200px"></div>
+                    </div>
+                    <br>
+                    <div>
+                        <label class="label">Giới Tính</label>
+                        <span id="divsex">
+                            <label class="sex">Nam</label><input type="radio" name="sex" value="Nam"
+                                checked />&emsp;<label class="sex">Nữ</label><input type="radio" name="sex"
+                                value="Nu" />
+                        </span>
+                    </div>
+                    <br>
+                    <div>
+                        <label class="label" style="vertical-align: top;">Địa chỉ</label>
+                        <textarea name="diachi" id="" cols="20" rows="5" class="textInput form-control" required ></textarea>
+                    </div>
+                    <br>
+                    
+                </div>
+                <div>
+                <div>
+                        <hr>
+                    </div>
+                    <div style="margin:auto;width:400px">
+                        <input type="submit" name="register" value="Đăng Ký" id="btn" class="textInput">
+                    </div>
+                    <div style="margin:auto;width:400px">
+                        <p>Bạn đã có tài khoản? <a href="login.php" style="text-decoration: none;color:blue"> Đăng nhập</a></p>
+                    </div>
+                </div>
+                
+            </form>
+        </div>
+    </main>
+    <?php
+        include "footer.html"
+    ?>
 </body>
 
 </html>
@@ -330,12 +385,14 @@ $('#username2').keyup(function() {
 
     });
 })
-$('#username2').blur(function(){
-	val_name= $(this).val();
-	$.post("xulyten.php",{val_name:val_name},function(data){
-		$('#name_error2').text(data);
-		
-	});
+$('#username2').blur(function() {
+    val_name = $(this).val();
+    $.post("xulyten.php", {
+        val_name: val_name
+    }, function(data) {
+        $('#name_error2').text(data);
+
+    });
 })
 // Xu ly trung email
 
@@ -347,12 +404,14 @@ $('#email').keyup(function() {
         $('#email_error').text(data);
 
     });
-     $('#email').blur(function(){
-	val_email= $(this).val();
-	$.post("xulymail.php",{val_email:val_email},function(data){
-		$('#email_error').text(data);
-		
-	  });
-  });
+    $('#email').blur(function() {
+        val_email = $(this).val();
+        $.post("xulymail.php", {
+            val_email: val_email
+        }, function(data) {
+            $('#email_error').text(data);
+
+        });
+    });
 })
 </script>

@@ -2,7 +2,7 @@
 <div class="swiper-container swiper2 container border" height= "300px" style="margin-top:20px;width:100%;padding: 27px  ">
     <div class="swiper-wrapper">
         <?php 
-             require "condb/DataProvider.php";
+             
              $sql="SELECT * FROM sanpham";
              $sql.=" LIMIT 10";
              $result=DataProvider::executeQuery($sql);

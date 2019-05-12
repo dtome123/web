@@ -1,5 +1,5 @@
 <?php session_start() ;
-
+ require "condb/DataProvider.php"
 ?>
 <!DOCTYPE HTML>
 <html lang="en">
@@ -62,7 +62,6 @@
                     echo 'Kết quả tìm kiếm của  " '.$_GET['tim'].' "';
                 }
                 else{
-                    require "condb/DataProvider.php";
                     if($_GET['theloai']!='all'){
                         $sql="SELECT * from theloai where MaTheLoai='".$_GET["theloai"];
                         $sql.="'";

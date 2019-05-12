@@ -1,5 +1,6 @@
 <?php 
     session_start();
+    require "condb/DataProvider.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -64,7 +65,7 @@
             </thead>
             <tbody>
                 <?php 
-                    require "condb/DataProvider.php";
+                    /* require "condb/DataProvider.php"; */
                     
                     
                     foreach ($_SESSION['cart'] as $key => $value) {
@@ -119,7 +120,7 @@
             <div class="row ">
                 <div class="col-sm-4 thanhtien">
                     <div>
-                        Tổng thành tiền :
+                        Tạm tính :
                         <span id="tongtien">
 
                         </span>
@@ -138,7 +139,7 @@
                         </span>
                         VNĐ
                     </div>
-                    <div><button class="btn btn-primary" id="xn"> Mua ngay</button></div>
+                    <div><button class="btn btn-primary" id="xn">Đặt mua </button></div>
                 </div>
             </div>
 

@@ -1,7 +1,7 @@
 
 <?php 
-    require "condb/DataProvider.php";
-    
+   
+   require "condb/DataProvider.php"; 
     if(isset($_GET['theloai'])){
       // so dong tren 1 trang
         $rowsPerPage = 8;

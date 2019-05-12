@@ -1,7 +1,7 @@
 <?php 
 session_start();
 $_SESSION['page']=1;
-
+require "condb/DataProvider.php"
 ?>
 <!DOCTYPE HTML>
 <html lang="en">
