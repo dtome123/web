@@ -1,5 +1,6 @@
-<?php session_start() ;
+<?php 
 require "condb/DataProvider.php";
+require "common.php";
 ?>
 <!DOCTYPE HTML>
 <html lang="en">
@@ -49,10 +50,10 @@ require "condb/DataProvider.php";
                             <button id="back"> Quay lại trang trước </button>
                         </div>';
                     if(isset($_GET["id"])){
-                        echo '<script>alert("'.$_GET["id"].'")</script>';
+                        /* echo '<script>alert("'.$_GET["id"].'")</script>'; */
                         if($_GET["id"]!="'"){
                             $sql="SELECT * From sanpham where MaSP like'".$_GET['id']."'";
-                            echo '<script>alert("'.$sql.'")</script>';
+                           /*  echo '<script>alert("'.$sql.'")</script>'; */
                             $result=DataProvider::executeQuery($sql);
                             $row=mysqli_fetch_array($result);
                             if(mysqli_num_rows($result)>0){

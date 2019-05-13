@@ -1,5 +1,6 @@
-<?php session_start() ;
- require "condb/DataProvider.php"
+<?php /* session_start() ; */
+ require "condb/DataProvider.php";
+ require "common.php";
 ?>
 <!DOCTYPE HTML>
 <html lang="en">

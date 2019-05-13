@@ -11,16 +11,16 @@
                 <p class="border">Đăng kí</p>
         </div> -->
         <div class="btn-group" style="float:right;margin-right:70px;margin-top:15px;width:130px ">
-            <button type="button" class="btn btn-danger"><?php if(isset($_COOKIE['username'])) echo $_COOKIE['username']; else echo "Tài khoản"; ?></button>
+            <button type="button" class="btn btn-danger"><?php if(isset($_COOKIE['username'])&& isset($_SESSION['iduser'])) echo $_COOKIE['username']; else echo "Tài khoản"; ?></button>
             <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 <span class="sr-only">Toggle Dropdown</span>
             </button>
             <div class="dropdown-menu" >
                 <!-- Xuat hien khi dang nhap -->
-                <?php require "common.php";
+                <?php 
                  if(isLogined()){ ?>
-                <a class="dropdown-item" href="#">Thông tin</a>
+                <a class="dropdown-item" href="xemtaikhoan.php">Thông tin</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" id="thoat" href="thoat.php">Đăng xuất</a>
                 <?php  }

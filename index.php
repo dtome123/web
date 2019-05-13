@@ -1,7 +1,9 @@
 <?php 
-session_start();
+/* session_start(); */
 $_SESSION['page']=1;
-require "condb/DataProvider.php"
+require "condb/DataProvider.php";
+require "common.php";
+
 ?>
 <!DOCTYPE HTML>
 <html lang="en">
@@ -67,7 +69,7 @@ require "condb/DataProvider.php"
     <!-- slider-main -->
 
     <main class="container-fluid " style="">
-        <div class="nav position-sticky container" id="head">
+        <div class="nav container" id="head">
             <li class="nav-item">
                 Nổi bật nhất
             </li>
@@ -76,7 +78,7 @@ require "condb/DataProvider.php"
         <div class="container-fluid group">
             <?php include 'groupsp.php' ?>
         </div>
-        <div class="nav position-sticky container" id="head" style="margin-top:10px">
+        <div class="nav container" id="head" style="margin-top:10px">
             <li class="nav-item">
                 Mới nhất
             </li>

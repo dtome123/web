@@ -5597,6 +5597,7 @@ a.badge-dark.focus {
     display: block;
     padding: 0.75rem 1.25rem;
     margin-bottom: -1px;
+    background-color: #fff;
     border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
@@ -8069,6 +8070,9 @@ button.bg-dark:focus {
 .position-sticky {
     position: -webkit-sticky !important;
     position: sticky !important;
+    margin-top: 50px;
+    top: 0;
+    padding: 0px;
 }
 
 .fixed-top {

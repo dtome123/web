@@ -1,6 +1,7 @@
 <?php
- session_start();
- require "condb/DataProvider.php"
+ /* session_start(); */
+ require "condb/DataProvider.php";
+ require "common.php";
  ?>
 <!DOCTYPE html>
 <html>
@@ -98,7 +99,6 @@
 			
 			$username=$_POST['username'];
 			$password=$_POST['password'];
-			
 			$sql="SELECT * FROM `khachhang` WHERE TenDN='$username'";
             $query=DataProvider::executeQuery($sql);
             echo $sql;
@@ -122,7 +122,7 @@
                     </script>";
     }			
 			if(mysqli_num_rows($query)==1 &&$password == $row['Pass']){
-				setcookie('username',$_POST['username'],time()+10000);
+				setcookie('username',$_POST['username'],time()+1000);
 				$_SESSION['iduser']=$row['MaKH'];
                 echo "<script>
                     $(document).ready(function(){

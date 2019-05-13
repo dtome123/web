@@ -1,5 +1,7 @@
-<?php session_start();
+<?php 
   require "condb/DataProvider.php";
+  require "common.php";
+  
 ?>
 <?php if(isset($_SESSION['cart'])) {?>
 <!DOCTYPE html>

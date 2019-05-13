@@ -1,6 +1,7 @@
 <?php 
-session_start();
-require "condb/DataProvider.php"
+/* session_start(); */
+require "condb/DataProvider.php";
+require "common.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -167,7 +168,7 @@ require "condb/DataProvider.php"
                     <br>
                     <div>
                         <label class="label" style="vertical-align: top;">Địa chỉ</label>
-                        <textarea name="diachi" id="" cols="20" rows="5" class="textInput form-control" required ></textarea>
+                        <textarea name="diachi" id="" cols="10" rows="3" class="textInput form-control" required ></textarea>
                     </div>
                     <br>
                     
@@ -177,7 +178,8 @@ require "condb/DataProvider.php"
                         <hr>
                     </div>
                     <div style="margin:auto;width:400px">
-                        <input type="submit" name="register" value="Đăng Ký" id="btn" class="textInput">
+                        
+                        
                     </div>
                     <div style="margin:auto;width:400px">
                         <p>Bạn đã có tài khoản? <a href="login.php" style="text-decoration: none;color:blue"> Đăng nhập</a></p>
