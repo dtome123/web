@@ -24,5 +24,6 @@ function isLogined()
 	return true;
 }
 
+
 ?>
 

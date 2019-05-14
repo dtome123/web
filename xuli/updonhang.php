@@ -5,7 +5,7 @@
     $date= date('Y-m-d');
     
     $tien=(int) $_POST['tt'];
-    $sql="INSERT into HoaDon(MaKH,NgayMua,ThanhTien,TrangThai) values($makh,'$date',$tien,'Đang giao')";
+    $sql="INSERT into HoaDon(MaKH,NgayMua,ThanhTien,TinhTrang) values($makh,'$date',$tien,'Đang giao')";
     
     $connection = mysqli_connect($hostName,$username,$password);
     if (!$connection)
@@ -57,9 +57,13 @@
 
 
     //tinh thoi gian giao hang
-    $date= getdate();
-    $dateint = mktime(0, 0, 0, $date['mday'],$date['mon']+7 , $date['year']);
+    /* $date= getdate();
+    $dateint = mktime(0, 0, 0, $date['mday']+7,$date['mon'],$date['year']);
     $date2= date('d/m/Y', $dateint);
+     */
+    $date=date_create($date);
+    date_modify($date, "+7 days");
+    /* echo date_format($date, "d/m/Y"); */
     echo 
     '<div id="empty" class="container" style="margin-top:200px">
         <img src="images/sys/xe.png" alt="" style="width:170px">
@@ -67,7 +71,7 @@
             <h3>
                 Mã đơn hàng của bạn là: <span style="color:blue"><u>'.$last_id.'</u></span>
             </h3>
-            <p><b>Thời gian dự kiến giao hàng vào: '.$date2.'</b></p>
+            <p><b>Thời gian dự kiến giao hàng vào: '.date_format($date, "d/m/Y").'</b></p>
             <p><i>Thông tin về đơn hàng đã gửi vào mail của bạn</i> </p>
 
         </span>

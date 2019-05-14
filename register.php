@@ -123,8 +123,8 @@ require "common.php";
                     </div>
                     <br>
                     <div id="username_div2">
-                        <label class="label">Tên đăng nhập</label>
-                        <input type="text" name="username2" id="username2" class="textInput form-control">
+                        <label class="label" >Tên đăng nhập</label>
+                        <input type="text" name="username2" id="username2" class="textInput form-control" placeholder="Ít nhất 5 kí tự">
                         <div id="name_error2" style="margin-left:200px; color:red"></div>
                     </div>
                     <br>
@@ -135,15 +135,16 @@ require "common.php";
                     </div>
                     <br>
                     <div id="password_div">
-                        <label class="label">Mật Khẩu</label>
-                        <input type="password" name="password" class="textInput form-control">
-                    </div>
-                    <br>
-                    <div id="pass_confirm_div">
-                        <label class="label">Nhập Lại Mật Khẩu</label>
-                        <input type="password" name="password_confirm" class="textInput form-control">
-                        <div id="password_error" style="margin-left:200px"></div>
-                    </div>
+                		<label class="label">Mật Khẩu</label>
+                		<input type="password" name="password" class="textInput form-control" placeholder="Ít nhất 6 kí tự">
+                		<div id="password_error" style="margin-left:200px"></div>
+            		</div>
+            		<br>
+            		<div id="password_confirm_div">
+                		<label class="label">Nhập Lại Mật Khẩu</label>
+                		<input type="password" name="password_confirm" class="textInput form-control">
+                		<div id="password_confirm_error" style="margin-left:200px"></div>
+            		</div>
                     <br>
                     <div id="number_div">
                         <label class="label">Điện Thoại</label>
@@ -178,13 +179,14 @@ require "common.php";
                         <hr>
                     </div>
                     <div style="margin:auto;width:400px">
-                        
+                        <input type="submit" id="sub" value="Đăng kí" class="btn btn-primary" style="width:100%" >
                         
                     </div>
                     <div style="margin:auto;width:400px">
                         <p>Bạn đã có tài khoản? <a href="login.php" style="text-decoration: none;color:blue"> Đăng nhập</a></p>
                     </div>
                 </div>
+
                 
             </form>
         </div>
@@ -208,6 +210,7 @@ var birth = document.forms['vform']['birth'];
 var name_error = document.getElementById('name_error');
 var email_error = document.getElementById('email_error');
 var password_error = document.getElementById('password_error');
+var password_confirm_error = document.getElementById('password_confirm_error');
 var number_error = document.getElementById('number_error');
 var birth_error = document.getElementById('birth_error');
 
@@ -216,6 +219,7 @@ username.addEventListener('blur', nameVerify, true);
 username2.addEventListener('blur', nameVerify2, true);
 email.addEventListener('blur', emailVerify, true);
 password.addEventListener('blur', passwordVerify, true);
+password_confirm.addEventListener('blur', password_confirmVerify, true);
 number.addEventListener('blur', numberVerify, true);
 birth.addEventListener('blur', birthVerify, true);
 // validation function
@@ -246,6 +250,13 @@ function Validate() {
         username2.focus();
         return false;
     }
+    if (username2.value.length <5 ) {
+        username2.style.border = "1px solid red";
+        document.getElementById('username_div2').style.color = "red";
+        name_error2.textContent = "Tên đăng nhập phải ít nhất 5 kí tự";
+        username2.focus();
+        return false;
+    }
     // validate username
     if (patt1.test(username2.value) == false) {
         username2.style.border = "1px solid red";
@@ -272,24 +283,51 @@ function Validate() {
         return false;
     }
 
-    if (password.value == "") {
+     if (password.value == "") {
         password.style.border = "1px solid red";
-        document.getElementById('pass_confirm_div').style.color = "red";
-        password_confirm.style.border = "1px solid red";
+        document.getElementById('password_div').style.color = "red";
         password_error.textContent = "Password không được để trống";
         password.focus();
         return false;
     }
+	if (parseInt(password.value.length) < 6) {
+		password.style.border = "1px solid red";
+        document.getElementById('password_div').style.color = "red";
+        password_error.textContent = "Password ít nhất có 6 ký tự";
+        password.focus();
+        return false;
+    }
+    ///không kí tự nháy
+    var patt=/[']/;
+    if(patt.test(password.value)){
+        password.style.border = "1px solid red";
+        document.getElementById('password_div').style.color = "red";
+        password_error.textContent = 'Không được có kí tự " '+"'"+' "';
+        password.focus();
+        return false;
+    }
+
     // check if the two passwords match
+    
+
     if (password.value != password_confirm.value) {
         password.style.border = "1px solid red";
-        document.getElementById('pass_confirm_div').style.color = "red";
+        document.getElementById('password_confirm_div').style.color = "red";
         password_confirm.style.border = "1px solid red";
-        password_error.innerHTML = "Mật khẩu nhập lại không khớp";
+        password_confirm_error.textContent = "Mật khẩu nhập lại không khớp";
         password_confirm.focus();
         return false;
     }
     // validate number
+    var patt = /^0[0-9]{9}/
+    if (number.value == "") {
+        number.style.border = "1px solid red";
+        document.getElementById('number_div').style.color = "red";
+        number_error.textContent = "Số điện thoại không được để trống";
+        number.focus();
+        return false;
+    }
+
     var patt = /^0[0-9]{9}/
     if (number.value == "") {
         number.style.border = "1px solid red";
@@ -346,20 +384,30 @@ function emailVerify() {
 function passwordVerify() {
     if (password.value != "") {
         password.style.border = "1px solid #5e6e66";
-        document.getElementById('pass_confirm_div').style.color = "#5e6e66";
         document.getElementById('password_div').style.color = "#5e6e66";
         password_error.innerHTML = "";
         return true;
     }
+	}
+	function password_confirmVerify() {
     if (password.value === password_confirm.value) {
         password.style.border = "1px solid #5e6e66";
-        document.getElementById('pass_confirm_div').style.color = "#5e6e66";
-        password_error.innerHTML = "";
+        document.getElementById('password_confirm_div').style.color = "#5e6e66";
+		password_confirm.style.border = "1px solid #5e6e66";
+        password_confirm_error.innerHTML = "";
         return true;
     }
 }
 
 function numberVerify() {
+	
+	if (number.value != "") {
+        number.style.border = "1px solid #5e6e66";
+        document.getElementById('number_div').style.color = "#5e6e66";
+        number_error.innerHTML = "";
+        return true;
+    }
+	
     if (patt.test(number.value) == true) {
         number.style.border = "1px solid #5e6e66";
         document.getElementById('number_div').style.color = "#5e6e66";
@@ -383,8 +431,14 @@ $('#username2').keyup(function() {
     $.post("xulyten.php", {
         val_name: val_name
     }, function(data) {
-        $('#name_error2').text(data);
-
+        if(data=='Tên tài khoản của bạn đã được sử dụng'){
+            $('#name_error2').text(data);
+            $('#sub').attr("disabled","disabled")
+        }
+        else{
+            $('#name_error2').text('');
+            $('input[type=submit]').removeAttr("disabled");
+        }
     });
 })
 $('#username2').blur(function() {
@@ -392,8 +446,14 @@ $('#username2').blur(function() {
     $.post("xulyten.php", {
         val_name: val_name
     }, function(data) {
-        $('#name_error2').text(data);
-
+        if(data=='Tên tài khoản của bạn đã được sử dụng'){
+            $('#name_error2').text(data);
+            $('#sub').attr("disabled","disabled")
+        }
+        else{
+            $('#name_error2').text('');
+            $('input[type=submit]').removeAttr("disabled");
+        }
     });
 })
 // Xu ly trung email
@@ -403,7 +463,14 @@ $('#email').keyup(function() {
     $.post("xulymail.php", {
         val_email: val_email
     }, function(data) {
-        $('#email_error').text(data);
+        if(data=='Email của bạn đã được sử dụng'){
+            $('#email_error').text(data);
+            $('#sub').attr("disabled","disabled")
+        }
+        else{
+            $('#email_error').text(data);
+            $('input[type=submit]').removeAttr("disabled");
+        }
 
     });
     $('#email').blur(function() {
@@ -411,8 +478,14 @@ $('#email').keyup(function() {
         $.post("xulymail.php", {
             val_email: val_email
         }, function(data) {
+            if(data=='Email của bạn đã được sử dụng'){
             $('#email_error').text(data);
-
+            $('#sub').attr("disabled","disabled")
+        }
+        else{
+            $('#email_error').text(data);
+            $('input[type=submit]').removeAttr("disabled");
+        }
         });
     });
 })

@@ -12,7 +12,7 @@ if(isLogined()){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>BG Kingdom</title>
     <link rel="stylesheet" href="plugin-frameworks/swiper.css">
     <link href="plugin-frameworks/bootstrap.css" rel="stylesheet">
     <link href="fonts/ionicons.css" rel="stylesheet">
@@ -98,8 +98,8 @@ if(isLogined()){
                     <a href="#" class="list-group-item list-group-item-action" style="background-color:yellow">
                         Menu
                     </a>
-                    <a href="xemtaikhoan.php" class="list-group-item list-group-item-action menu">Thông tin tài khoản</a>
-                    <a href="" class="list-group-item list-group-item-action menu">Thông tin đơn hàng</a>
+                    <a href="xemtaikhoan.php" class="list-group-item list-group-item-action menu active">Thông tin tài khoản</a>
+                    <a href="xemhoadon.php" class="list-group-item list-group-item-action menu">Thông tin đơn hàng</a>
                 </div>
             </div>
             <div class="col-md-9">
@@ -127,7 +127,7 @@ if(isLogined()){
                     <div style="width:500px;">
                         <form method="POST" onsubmit="return Validate()" name="vform" action="xulythongtintaikhoan.php">
                             <div align="center">
-                                <h2>Thông Tin Tài Khoản</h2>
+                                <h2 style="font-family:taviraj;font-weight:bold;color:green;padding:5px">Thông Tin Tài Khoản</h2>
                             </div>
                             <br>
                             <div>
@@ -203,15 +203,22 @@ if(isLogined()){
 
     </div>
 
-    <div class="container-fluid" id="footer">
-
-    </div>
+    <?php include "footer.html" ?>
 
 
 </body>
 
 </html>
-<?php } ?>
+<?php }
+else{
+    $hostURL  = $_SERVER['HTTP_HOST'];
+$dirURL   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+$extraURL = 'index.php';
+$strURL = "http://" . $hostURL . $dirURL . "/" . $extraURL;
+echo($strURL);
+header("Location:$strURL");
+}
+ ?>
 <script>
 // SELECTING ALL TEXT ELEMENTS
 var username = document.forms['vform']['username'];

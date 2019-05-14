@@ -6,7 +6,7 @@
 <html lang="en">
 
 <head>
-    <title>Quite Light</title>
+    <title>BG Kingdom</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
@@ -59,24 +59,42 @@
         <div class="nav " id="head">
             <li class="nav-item">
                 <?php 
+                $all="";
+                $n=-1;
+                if(isset($_GET['theloai'])){
+                    $_GET['theloai']=str_replace("'","",$_GET['theloai']);
+                }
                 if(isset($_GET['tim'])){
+                    $_GET['tim']=str_replace("'","",$_GET['tim']);
+                }   
+
+                if(isset($_GET['tim'])){
+                    
                     echo 'Kết quả tìm kiếm của  " '.$_GET['tim'].' "';
                 }
                 else{
-                    if($_GET['theloai']!='all'){
-                        $sql="SELECT * from theloai where MaTheLoai='".$_GET["theloai"];
-                        $sql.="'";
-                        $re=DataProvider::executeQuery($sql);
-                        $row=mysqli_fetch_array($re);
-                        echo $row['TenTL'];
+                    
+                    $sql="SELECT * from theloai where MaTheLoai='".$_GET["theloai"];
+                    $sql.="'";
+                    $re=DataProvider::executeQuery($sql);
+                    $row=mysqli_fetch_array($re);
+                    $n=mysqli_num_rows($re);
+                    if($n>0 || $_GET['theloai']=='all'){
+                        if($_GET['theloai']!='all'){    
+                            echo $row['TenTL'];
+                        }
+                        else
+                            echo "Tất cả thể loại";
+                            $all="all";
                     }
-                    else
-                        echo "Tất cả thể loại";
+                    
+                    
                 }
             ?>
 
             </li>
         </div>
+        <?php if($n>0 || $all=='all' ) {?>
         <form action="">
             <div class="nav loc" id="menu_mini">
 
@@ -127,9 +145,15 @@
 
 
 
-
+        <?php }
+         else {
+            echo '<div id="empty" class="container" style="margin-top:100px">
+                    <h3>
+                        Không tìm thấy
+                    </h3>
+                </div>';} ?>
     </main>
-
+    
 
     <?php
         include "footer.html"
@@ -191,7 +215,7 @@
     });
     </script>
 
-
+    
 </body>
 
 </html>

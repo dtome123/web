@@ -9,7 +9,7 @@
 		$birth=$_POST['birth'];
 		$sex=$_POST['sex'];
 		$dc=$_POST['diachi'];
-		$sql="INSERT INTO `khachhang` ( `TenKH`, `TenDN`, `Email`, `Pass`, `SoDT`, `NgaySinh`, `GioiTinh`,`DiaChi`) values('$username','$username2','$email','$password','$number','$birth','$sex','$dc')";
+		$sql="INSERT INTO `khachhang` ( `TenKH`, `TenDN`, `Email`, `Pass`, `SoDT`, `NgaySinh`, `GioiTinh`,`DiaChi`,`block`) values('$username','$username2','$email','$password','$number','$birth','$sex','$dc',0)";
 		$query=DataProvider::executeQuery($sql);		
 	}
 	if($query)

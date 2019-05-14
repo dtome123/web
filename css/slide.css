@@ -31,6 +31,9 @@
 }
 
 @media only screen and (max-width: 600px) {
+    #slide {
+        width: 100% !important
+    }
     .gallery-top {
         height: 50%;
         width: 100%;

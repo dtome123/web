@@ -7,7 +7,7 @@
 <html>
 
 <head>
-    <title>BG</title>
+    <title>BG Kingdom</title>
     <link rel="stylesheet" href="plugin-frameworks/swiper.css">
     <link href="plugin-frameworks/bootstrap.css" rel="stylesheet">
     <link href="fonts/ionicons.css" rel="stylesheet">
@@ -93,18 +93,31 @@
     <?php
 
 // Xử lý đăng nhập
+        function toString($s){
+            include ('condb/db.inc');
+            $connection = mysqli_connect($hostName,$username,$password);
+            $s=sprintf('%s',mysqli_real_escape_string($connection,$s));
+            mysqli_close($connection);
+            return $s;
+        }
+
 		if(isset($_POST['login'])){
             
 			
 			
-			$username=$_POST['username'];
-			$password=$_POST['password'];
-			$sql="SELECT * FROM `khachhang` WHERE TenDN='$username'";
+			$user=$_POST['username'];
+            $pass=$_POST['password'];
+            $user=toString($user);
+            echo $user;
+
+            /* $sQuery = sprintf("select * from t_user where USER_ID = '%s'", mysqli_real_escape_string($username)); */
+            $sql="SELECT * FROM `khachhang` WHERE TenDN='$user'";
+            
             $query=DataProvider::executeQuery($sql);
             echo $sql;
 			// Lay mat khau trong database ra
 			$row = mysqli_fetch_array($query);
-			if((mysqli_num_rows($query)==0 && $password != $row['Pass']) || (mysqli_num_rows($query)==0 && $password == $row['Pass']) ){
+			if((mysqli_num_rows($query)==0 && $pass != $row['Pass']) || (mysqli_num_rows($query)==0 && $pass == $row['Pass']) ){
                 echo "<script>
                 $(document).ready(function(){
 
@@ -113,7 +126,7 @@
                 </script>";
 			}
 				// So sánh 2 mat khau có trùng không				
-				if (mysqli_num_rows($query)==1 &&$password != $row['Pass']) {
+				if (mysqli_num_rows($query)==1 &&$pass!= $row['Pass']) {
                     echo "<script>
                     $(document).ready(function(){
                         alert('Mật khẩu không chính xác.')
@@ -121,16 +134,26 @@
                     })
                     </script>";
     }			
-			if(mysqli_num_rows($query)==1 &&$password == $row['Pass']){
-				setcookie('username',$_POST['username'],time()+1000);
-				$_SESSION['iduser']=$row['MaKH'];
+			if($row['block']==0){
+                if(mysqli_num_rows($query)==1 &&$pass == $row['Pass']){
+                    setcookie('username',$_POST['username'],time()+5000);
+                    $_SESSION['iduser']=$row['MaKH'];
+                    echo "<script>
+                        $(document).ready(function(){
+                            alert('Bạn đã đăng nhập thành công')
+                            history.go(-2);
+                        })
+                    </script>";
+                }
+            }
+            else{
                 echo "<script>
-                    $(document).ready(function(){
-                        alert('Bạn đã đăng nhập thành công')
-                        history.go(-2);
-                    })
-                </script>";
-	        }
+                        $(document).ready(function(){
+                            alert('Tài khoản của bạn đã bị khóa')
+                        })
+                    </script>";
+            }
+
 		}
 ?>
 </head>

@@ -1,6 +1,6 @@
 
 
-    <div style="height: 500px;margin-top:80px " id="slide" class=" container ">
+    <div style="height: 500px;margin-top:80px;width:80% " id="slide" class=" container ">
         <!-- Swiper -->
         <div class="swiper-container gallery-top gallery-top1 " style="margin-bottom: 20px">
             <div class="swiper-wrapper ">

@@ -1,9 +1,11 @@
 
 <?php 
-   
+    
    require "condb/DataProvider.php"; 
+   
     if(isset($_GET['theloai'])){
       // so dong tren 1 trang
+        
         $rowsPerPage = 8;
         $pageNum=1;
         // mac dinh hien thi trang 1

@@ -1,6 +1,4 @@
 <?php
-
-$_SESSION['page']=1;
 require "condb/DataProvider.php";
 require "common.php";
 if(isLogined()){
@@ -12,7 +10,7 @@ if(isLogined()){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>BG Kingdom</title>
     <link rel="stylesheet" href="plugin-frameworks/swiper.css">
     <link href="plugin-frameworks/bootstrap.css" rel="stylesheet">
     <link href="fonts/ionicons.css" rel="stylesheet">
@@ -56,7 +54,7 @@ if(isLogined()){
 
     #content {
         background-color: white;
-        height: 600px;
+        height: 700px;
     }
 
     #footer {
@@ -98,8 +96,9 @@ if(isLogined()){
                     <a href="#" class="list-group-item list-group-item-action" style="background-color:yellow">
                         Menu
                     </a>
-                    <a href="" class="list-group-item list-group-item-action menu">Thông tin tài khoản</a>
-                    <a href="" class="list-group-item list-group-item-action menu">Thông tin đơn hàng</a>
+                    <a href="xemtaikhoan.php" class="list-group-item list-group-item-action menu active">Thông tin tài
+                        khoản</a>
+                    <a href="xemhoadon.php" class="list-group-item list-group-item-action menu">Thông tin đơn hàng</a>
                 </div>
             </div>
             <div class="col-md-9">
@@ -112,29 +111,100 @@ if(isLogined()){
                     ?>
                     <h2 style="font-family:play;margin-left:5px;color:green;">Thông tin tài khoản</h2>
                     <div style="margin-left:20px">
-                        <p style="font-size:22px;font-family: font-family: play !important" ><b>Họ và tên :</b> <?php echo $row['TenKH'] ?></p>
-                        <p style="font-size:22px;font-family: font-family: play !important" ><b>Họ tài khoản :</b> <?php echo $row['TenDN'] ?></p>
-                        <p style="font-size:22px;font-family: font-family: play !important" ><b>Email :</b> <?php echo $row['Email'] ?></p>
-                        <p style="font-size:22px;font-family: font-family: play !important" ><b>Ngay sinh :</b> <?php echo $row['NgaySinh'] ?></p>
-                        <p style="font-size:22px;font-family: font-family: play !important" ><b>Giới tính :</b> <?php if($row['GioiTinh']=='Nu') $row['GioiTinh']="Nữ" ;echo $row['GioiTinh']  ?></p>
-                        <p style="font-size:22px;font-family: font-family: play !important" ><b>Số điện thoại :</b> <?php echo $row['SoDT'] ?></p>
-                        <p style="font-size:22px;font-family: font-family: play !important" ><b>Địa chỉ :</b> <?php echo $row['DiaChi'] ?></p>
-                        <a href="capnhattaikhoan.php" ><button  class="btn btn-primary">Sửa</button></a>
+                        <p style="font-size:22px;font-family: font-family: play !important"><b>Họ và tên :</b>
+                            <?php echo $row['TenKH'] ?></p>
+                        <p style="font-size:22px;font-family: font-family: play !important"><b>Tên tài khoản :</b>
+                            <?php echo $row['TenDN'] ?></p>
+                        <p style="font-size:22px;font-family: font-family: play !important"><b>Email :</b>
+                            <?php echo $row['Email'] ?></p>
+                        <p style="font-size:22px;font-family: font-family: play !important"><b>Ngày sinh :</b>
+                            <?php echo date('d/m/Y',strtotime($row['NgaySinh']))  ?></p>
+                        <p style="font-size:22px;font-family: font-family: play !important"><b>Giới tính :</b>
+                            <?php if($row['GioiTinh']=='Nu') $row['GioiTinh']="Nữ" ;echo $row['GioiTinh']  ?></p>
+                        <p style="font-size:22px;font-family: font-family: play !important"><b>Số điện thoại :</b>
+                            <?php echo $row['SoDT'] ?></p>
+                        <p style="font-size:22px;font-family: font-family: play !important"><b>Địa chỉ :</b>
+                            <?php echo $row['DiaChi'] ?></p>
+
+                        <a href="capnhattaikhoan.php"><button class="btn btn-primary"
+                                style="width:150px">Sửa</button></a>
+                    </div>
+                    <hr>
+                    <div style="margin-left:20px">
+                        <button class="btn" style="background-color:rgb(157, 157, 241)" id="nhan">Đổi mật khẩu</button>
+                    </div>
+                    <div class="container-fluid" style="margin-top:20px;margin-left:20px;display:none" id="suapass" >
+                    <form action="xuli/doipass.php" method="post">
+                        <div class="form-group row">
+                            <label for="oldPassword" class="col-sm-2 col-form-label">Mật khẩu cũ</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" id="oldPassword" placeholder="Password" style="width:50%" name="passOld" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="Password1" class="col-sm-2 col-form-label">Mật khẩu mới</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" id="password1" placeholder="Password" style="width:50%" name="pass1"  required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="Password2" class="col-sm-2 col-form-label">Nhập lại</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" id="password2" placeholder="Password" style="width:50%" name="pass2" required>
+                            </div>
+                        </div>
+                        <input type="submit" value="Cập nhật" class="btn " style="background-color:rgb(111, 235, 111)" id="submitpass" >
+                    </form>
                     </div>
                 </div>
             </div>
 
 
 
-
+        <script>
+            $("#nhan").click(function () { 
+                $("#suapass").toggle();
+            });
+            $('#submitpass').click(function () {
+                var p1=$('#password1').val();
+                var p2=$('#password2').val();
+                if(p1.length<6){
+                    alert("Mật khẩu mới phải có ít nhất 6 kí tự")
+                    return false;
+                }
+                if(p1!=p2){
+                    alert("Mật khẩu nhập lại không đúng")
+                    $('#password2').focus();
+                    return false;
+                }
+                var patt=/[']/;
+                if(patt.test(p1))
+                {
+                    alert('Không được có kí tự " '+ "'"+' "' );
+                    $('#password1').focus();
+                    return false;
+                }
+                var r=confirm("Bạn chắc chắn muốn đổi mật khẩu")
+                if(r==false)
+                    return false
+                return true;
+            })
+        </script>
         </div>
-
-        <div class="container-fluid" id="footer">
-
-        </div>
+    </div>
+    <?php include "footer.html" ?>
 
 
 </body>
 
 </html>
-<?php } ?>
+<?php } 
+else{
+    $hostURL  = $_SERVER['HTTP_HOST'];
+$dirURL   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+$extraURL = 'index.php';
+$strURL = "http://" . $hostURL . $dirURL . "/" . $extraURL;
+echo($strURL);
+header("Location:$strURL");
+}
+?>

@@ -6,7 +6,7 @@ require "common.php";
 <html lang="en">
 
 <head>
-    <title>Quite Light</title>
+    <title>BG Kingdom</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
@@ -50,10 +50,12 @@ require "common.php";
                             <button id="back"> Quay lại trang trước </button>
                         </div>';
                     if(isset($_GET["id"])){
+                        $_GET['id']=str_replace("'","",$_GET['id']);
                         /* echo '<script>alert("'.$_GET["id"].'")</script>'; */
                         if($_GET["id"]!="'"){
-                            $sql="SELECT * From sanpham where MaSP like'".$_GET['id']."'";
-                           /*  echo '<script>alert("'.$sql.'")</script>'; */
+                            $sql="SELECT * From sanpham where MaSP ='".$_GET['id']."'";
+                            
+                            echo '<script>alert("'.$sql.'")</script>';
                             $result=DataProvider::executeQuery($sql);
                             $row=mysqli_fetch_array($result);
                             if(mysqli_num_rows($result)>0){

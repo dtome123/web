@@ -12,7 +12,7 @@ if(isLogined()){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>BG Kingdom</title>
     <link rel="stylesheet" href="plugin-frameworks/swiper.css">
     <link href="plugin-frameworks/bootstrap.css" rel="stylesheet">
     <link href="fonts/ionicons.css" rel="stylesheet">
@@ -104,7 +104,7 @@ if(isLogined()){
                     </a>
                     <a href="xemtaikhoan.php" class="list-group-item list-group-item-action menu">Thông tin tài
                         khoản</a>
-                    <a href="" class="list-group-item list-group-item-action menu">Thông tin đơn hàng</a>
+                    <a href="" class="list-group-item list-group-item-action menu active">Thông tin đơn hàng</a>
                 </div>
             </div>
             <div class="col-md-9">
@@ -119,33 +119,49 @@ if(isset($_COOKIE['username']))
 						$id=$row["MaKH"];
 					}
 ?>
-                    <h1 style="text-align:center">Đơn hàng của tôi</h1>
+                    <h1 style="text-align:center; font-family:taviraj;font-weight:bold;color:green">Đơn hàng của tôi</h1>
                     <br>
-                    <table style="font-size:20px; margin-bottom:10px" width="800px" border="1" align="center">
-                        <tr>
-                            <th>Mã đơn hàng</th>
-                            <th>Ngày mua</th>
-                            <th>Tổng tiền</th>
-                            <th>Trạng thái</th>
-                        </tr>
+                   
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Mã đơn hàng</th>
+                                <th>Ngày mua</th>
+                                <th>Tổng tiền</th>
+                                <th>Trạng thái</th>
+                            </tr>
+                        </thead>
+                        <tbody>
                         <?php
-			$sql1="SELECT * FROM `hoadon` where MaKH='$id'";
-						$query=DataProvider::executeQuery($sql1);
-			$i = 1;
-				while($row = mysqli_fetch_array($query)){ ?>
+                        $sql1="SELECT * FROM `hoadon` where MaKH='$id'";
+                                    $query=DataProvider::executeQuery($sql1);
+                        $i = 1;
+			        	while($row = mysqli_fetch_array($query)){ ?>
                     
                      <tr>
                      
         			 <td><a href="chitietdonhang.php?id=<?php echo $row['MaHD'] ?>"> <?php echo $row['MaHD'] ?></a></td>
-            		 <td><?php echo $row['NgayMua'] ?></td>
+            		 <td><?php echo date('d/m/Y',strtotime($row['NgayMua']))  ?></td>
             		 <td><?php echo $row['ThanhTien'] ?></td>
-                     <td><?php echo $row['TrangThai'] ?></td>
+                     <td><?php
+                        $t=$row['TinhTrang'];
+                        if($t==0)
+                            echo "Chưa giao";
+                        if($t==1)
+                            echo "Đang giao";
+                        if($t==2)
+                            echo "Đã giao";
+                        if($t==3)
+                            echo "Hủy";
+                         ?>
+                     </td>
                      
                      </tr>
                     
 			
-		<?php $i++; }
-        ?>
+                    <?php $i++; }
+                    ?>
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -156,12 +172,19 @@ if(isset($_COOKIE['username']))
 
     </div>
 
-    <div class="container-fluid" id="footer">
-
-    </div>
+    <?php include "footer.html" ?>
 
 
 </body>
 
 </html>
-<?php } ?>
+<?php }
+else{
+    $hostURL  = $_SERVER['HTTP_HOST'];
+$dirURL   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+$extraURL = 'index.php';
+$strURL = "http://" . $hostURL . $dirURL . "/" . $extraURL;
+echo($strURL);
+header("Location:$strURL");
+}
+ ?>

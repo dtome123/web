@@ -204,3 +204,24 @@ header .dropdown-menu {
 #empty button:hover {
     color: blue
 }
+
+
+/* Footer */
+
+#footer div a {
+    text-decoration: none;
+    color: beige;
+}
+
+#footer div {
+    color: beige;
+    font-size: 17px
+}
+
+#footer {
+    font-size: 15px;
+}
+
+#footer img {
+    height: 30px;
+}
